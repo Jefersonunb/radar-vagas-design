@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radar de Vagas de Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: one column tool, mobile first. A band of randomly rotated tiles (Brasília's
+   azulejo panels) sits behind the title; everything below it stays quiet. */
+:root{
+  --paper:#F2F5F8; --surface:#FFFFFF; --ink:#0F1F2E; --muted:#56687A; --line:#D3DBE3;
+  --accent:#0B4FD6; --accent-ink:#FFFFFF; --accent-soft:#E3ECFD; --sun:#F2B705;
+  --ok:#0C7446; --ok-soft:#DDF3E7; --warn:#9A5200; --warn-soft:#FCEBD3; --bad:#B3261E;
+  --display:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif;
+  --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"DM Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0C131A; --surface:#141D26; --ink:#E7EDF3; --muted:#93A3B3; --line:#263340;
+    --accent:#77A4FF; --accent-ink:#071224; --accent-soft:#18294A; --sun:#F5C83A;
+    --ok:#56C892; --ok-soft:#12301F; --warn:#F0AC55; --warn-soft:#3A2810; --bad:#FF8A80;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0C131A; --surface:#141D26; --ink:#E7EDF3; --muted:#93A3B3; --line:#263340;
+  --accent:#77A4FF; --accent-ink:#071224; --accent-soft:#18294A; --sun:#F5C83A;
+  --ok:#56C892; --ok-soft:#12301F; --warn:#F0AC55; --warn-soft:#3A2810; --bad:#FF8A80;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5}
+a{color:var(--accent)}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.wrap{max-width:860px;margin:0 auto;padding:0 16px}
+
+/* header */
+.top{position:relative;background:var(--surface);border-bottom:1px solid var(--line);overflow:hidden}
+#tiles{position:absolute;inset:0;width:100%;height:100%;display:block}
+.top .wrap{position:relative;padding-top:20px;padding-bottom:16px;display:flex;flex-direction:column;gap:10px}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--surface);align-self:flex-start;padding:2px 6px;border-radius:4px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,9vw,56px);line-height:.95;letter-spacing:-.02em;margin:0;text-wrap:balance}
+h1 span{background:var(--surface);box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 6px 2px 0}
+.rule{margin:0;max-width:52ch;background:var(--surface);align-self:flex-start;padding:4px 8px 4px 0;border-radius:4px;color:var(--ink)}
+.rule b{font-weight:600}
+
+/* sweep strip */
+.sweep{background:var(--ink);color:var(--paper)}
+.sweep .wrap{display:flex;flex-wrap:wrap;gap:4px 18px;padding-top:9px;padding-bottom:9px;font-family:var(--mono);font-size:12.5px}
+.sweep b{font-weight:500;color:var(--sun)}
+
+/* tabs */
+nav.tabs{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav.tabs .wrap::-webkit-scrollbar{display:none}
+nav.tabs a{flex:0 0 auto;padding:12px 12px 10px;text-decoration:none;color:var(--muted);font-weight:600;border-bottom:3px solid transparent;white-space:nowrap}
+nav.tabs a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--accent)}
+
+main{padding:18px 0 56px}
+section.view{display:none;flex-direction:column;gap:16px}
+section.view.on{display:flex}
+h2{font-family:var(--display);font-weight:700;font-size:24px;line-height:1.1;margin:8px 0 0;text-wrap:balance}
+h3{font-family:var(--display);font-weight:700;font-size:18px;margin:0}
+p{margin:0}
+.lede{color:var(--muted);max-width:65ch}
+
+/* filters */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 12px;cursor:pointer;font-weight:500;font-size:14.5px;display:inline-flex;gap:7px;align-items:center}
+.chip .n{font-family:var(--mono);font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.chip[aria-pressed="true"] .n{color:var(--accent-ink);opacity:.85}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.controls label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--muted);min-width:0}
+.controls .wide{grid-column:1/-1}
+select,input[type="search"],textarea{width:100%;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:16px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface)}
+.seg button{border:0;background:transparent;padding:8px 12px;cursor:pointer;font-weight:500;font-size:14.5px}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--paper);border-radius:10px;padding:9px 14px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;font-size:15px}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.small{padding:6px 10px;font-size:14px}
+.btn[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--ink)}
+.btn:disabled{opacity:.5;cursor:default}
+.count{font-family:var(--mono);font-size:13px;color:var(--muted)}
+
+/* job cards */
+#list{display:flex;flex-direction:column;gap:12px}
+.job{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:12px;padding:14px 14px 12px;display:flex;flex-direction:column;gap:8px}
+.job.e-bsb{border-left-color:var(--accent)}
+.job.e-ok{border-left-color:var(--ok)}
+.job.e-no{border-left-color:var(--warn)}
+.job.done{opacity:.62}
+.job .head{display:flex;gap:10px;justify-content:space-between;align-items:flex-start}
+.job h3{font-size:19px;line-height:1.2;overflow-wrap:anywhere}
+.job .orig{font-size:13.5px;color:var(--muted);overflow-wrap:anywhere}
+.job .co{font-weight:600}
+.new{flex:0 0 auto;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;background:var(--sun);color:#1A1400;border-radius:4px;padding:2px 6px;margin-top:3px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:13px;border-radius:6px;padding:2px 8px;border:1px solid var(--line);color:var(--ink);background:transparent}
+.tag.bsb{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.tag.ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok);font-weight:600}
+.tag.no{background:var(--warn-soft);border-color:var(--warn);color:var(--warn);font-weight:600}
+.tag.pay{font-family:var(--mono);font-size:12.5px}
+.job .sum{max-width:65ch}
+.job .note{font-size:14px;color:var(--warn);max-width:65ch}
+.job .meta{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.job .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
+.empty{background:var(--surface);border:1px dashed var(--line);border-radius:12px;padding:22px 16px;color:var(--muted)}
+.notice{background:var(--warn-soft);border:1px solid var(--warn);color:var(--ink);border-radius:10px;padding:10px 12px;font-size:14.5px}
+#digestBox{display:none;flex-direction:column;gap:8px}
+#digestBox.on{display:flex}
+#digestText{min-height:220px;font-family:var(--mono);font-size:13px;line-height:1.45}
+
+/* sources */
+.group{display:flex;flex-direction:column;gap:8px}
+.src{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.src .line1{display:flex;gap:8px;justify-content:space-between;align-items:baseline;flex-wrap:wrap}
+.src .name{font-weight:600;font-size:16.5px}
+.src .how{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;border-radius:4px;padding:2px 6px;border:1px solid var(--line);color:var(--muted)}
+.src .how.auto{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.src .how.man{background:var(--accent-soft);border-color:var(--accent);color:var(--ink)}
+.src p{color:var(--muted);font-size:14.5px;max-width:65ch}
+.src .links{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14.5px}
+
+/* routine */
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0;border-left:2px solid var(--line);margin-left:6px}
+.steps li{position:relative;padding:0 0 16px 18px}
+.steps li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:2px solid var(--paper)}
+.steps .when{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.steps .what{font-weight:600}
+.steps p{color:var(--muted);font-size:14.5px;max-width:65ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.card ul,.card ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;max-width:65ch}
+.fact{border-left:5px solid var(--sun);background:var(--surface);border-radius:0 12px 12px 0;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.fact .big{font-family:var(--display);font-weight:800;font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+.q{display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--line);padding-top:10px}
+.q:first-of-type{border-top:0;padding-top:0}
+.q code{font-family:var(--mono);font-size:13px;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:block;overflow-x:auto;white-space:pre-wrap;overflow-wrap:anywhere}
+.q .lbl{font-weight:600;font-size:14.5px}
+.q .acts{display:flex;flex-wrap:wrap;gap:8px}
+
+/* translator */
+#trOut{white-space:pre-wrap;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;min-height:120px;max-width:70ch;overflow-wrap:anywhere}
+#trIn{min-height:170px}
+.hint{font-size:13.5px;color:var(--muted)}
+footer{color:var(--muted);font-size:13px;padding:0 0 40px}
+footer .wrap{border-top:1px solid var(--line);padding-top:14px;max-width:860px}
+@media (min-width:640px){
+  .controls{grid-template-columns:1fr 1fr 2fr}
+  .controls .wide{grid-column:auto}
+}
+@media (prefers-reduced-motion:no-preference){
+  .chip,.btn,.seg button{transition:background-color .12s,border-color .12s}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <canvas id="tiles" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <span class="kicker">Design gráfico · UI · UX</span>
+    <h1><span>Radar de Vagas</span><br><span>de Design</span></h1>
+    <p class="rule"><b>Base em Brasília.</b> Fora de Brasília, só entra o que é home office e aceita quem mora no Brasil. Tudo traduzido para o português.</p>
+  </div>
+</header>
+
+<div class="sweep" role="status"><div class="wrap" id="sweepLine">Carregando a última varredura…</div></div>
+
+<nav class="tabs" aria-label="Seções"><div class="wrap">
+  <a href="#vagas" data-tab="vagas">Vagas</a>
+  <a href="#fontes" data-tab="fontes">Fontes</a>
+  <a href="#rotina" data-tab="rotina">Rotina diária</a>
+  <a href="#tradutor" data-tab="tradutor">Tradutor</a>
+</div></nav>
+
+<main><div class="wrap">
+
+<!-- VAGAS -->
+<section class="view" id="view-vagas" aria-label="Vagas">
+  <div class="chips" id="eligChips" role="group" aria-label="Onde é a vaga"></div>
+  <div class="controls">
+    <label>Área
+      <select id="fArea">
+        <option value="todas">Todas as áreas</option>
+        <option value="grafico">Gráfico, marca e marketing</option>
+        <option value="uiux">UI, UX e produto</option>
+        <option value="motion">Motion</option>
+        <option value="direcao">Direção de arte e criação</option>
+      </select>
+    </label>
+    <label>Contrato
+      <select id="fTipo">
+        <option value="todos">Todos</option>
+        <option value="clt">Emprego (CLT ou integral)</option>
+        <option value="contrato">Projeto, PJ ou freela</option>
+        <option value="estagio">Estágio</option>
+      </select>
+    </label>
+    <label class="wide">Buscar
+      <input type="search" id="fQ" placeholder="cargo, empresa, palavra-chave" autocomplete="off">
+    </label>
+  </div>
+  <div class="row">
+    <div class="seg" role="group" aria-label="Idioma dos títulos">
+      <button type="button" id="langPt" aria-pressed="true">Português</button>
+      <button type="button" id="langOr" aria-pressed="false">Original</button>
+    </div>
+    <button type="button" class="chip" id="fNovas" aria-pressed="false">Só as novas</button>
+    <button type="button" class="btn ghost small" id="digestBtn">Gerar compilado</button>
+  </div>
+  <div id="digestBox">
+    <label for="digestText" class="hint">Compilado das vagas filtradas, pronto para colar no WhatsApp ou e-mail.</label>
+    <textarea id="digestText" readonly></textarea>
+    <div class="row"><span class="hint" id="digestMsg"></span><button type="button" class="btn small" id="digestCopy">Copiar texto</button></div>
+  </div>
+  <div class="count" id="count" aria-live="polite"></div>
+  <div id="loadNote" class="notice" hidden></div>
+  <div id="list"><div class="empty">Carregando vagas…</div></div>
+</section>
+
+<!-- FONTES -->
+<section class="view" id="view-fontes" aria-label="Fontes">
+  <h2>Onde o radar procura</h2>
+  <p class="lede">A varredura automática lê os canais abertos. Os sites que bloqueiam robôs entram na checagem manual: cada link abaixo já abre a busca filtrada.</p>
+  <div id="srcGroups"></div>
+</section>
+
+<!-- ROTINA -->
+<section class="view" id="view-rotina" aria-label="Rotina diária">
+  <h2>Estratégia de busca e compilado diário</h2>
+  <p class="lede">Uma varredura automática cedo, dez minutos de checagem manual e candidaturas no mesmo dia.</p>
+
+  <div class="fact">
+    <span class="big">4 de 39</span>
+    <p>Na varredura de 24/11/2026, das 39 vagas remotas de design publicadas no Jobicy só 4 aceitavam América Latina. Remoto não quer dizer que aceita Brasil. Por isso o radar classifica cada vaga antes de mostrar.</p>
+  </div>
+
+  <h3>O dia, no horário de Brasília</h3>
+  <ol class="steps">
+    <li><span class="when">07:30 · automático</span><div class="what">Varredura</div>
+      <p>Leitura dos canais abertos (Jobicy, We Work Remotely, Remote OK, Working Nomads, Himalayas) e busca na web pelas vagas de Brasília e pelas plataformas de projetos. Só passam cargos de design gráfico, marca, UI, UX, produto, motion e direção de arte.</p></li>
+    <li><span class="when">07:40 · automático</span><div class="what">Triagem de quem pode se candidatar</div>
+      <p>Cada vaga recebe um selo: Brasília, remoto Brasil, remoto América Latina, remoto mundo, ou restrita a outro país. As restritas ficam guardadas fora da lista principal.</p></li>
+    <li><span class="when">07:45 · automático</span><div class="what">Tradução e limpeza</div>
+      <p>Título e resumo em português do Brasil, seja qual for o idioma do anúncio. Duplicadas são unidas e vagas com mais de 45 dias saem.</p></li>
+    <li><span class="when">08:00 · compilado</span><div class="what">Compilado do dia aqui no radar</div>
+      <p>As novas aparecem com o selo Nova. O botão Gerar compilado monta o texto para enviar por WhatsApp ou e-mail.</p></li>
+    <li><span class="when">10 min · manual</span><div class="what">Checagem dos sites fechados</div>
+      <p>LinkedIn, Indeed, Dribbble, Behance, Upwork, 99Freelas e Workana não deixam robôs lerem. Abra os links da aba Fontes, com filtro de últimas 24 horas.</p></li>
+    <li><span class="when">até 12:00</span><div class="what">Candidaturas</div>
+      <p>Três a cinco por dia, começando pelas publicadas há menos de três dias. Marque Já me candidatei para acompanhar.</p></li>
+    <li><span class="when">segunda-feira</span><div class="what">Revisão da semana</div>
+      <p>Conferir alertas por e-mail no LinkedIn, Indeed e Jooble, atualizar portfólio e perfis nas plataformas de projetos, e ver quais fontes renderam entrevistas.</p></li>
+  </ol>
+
+  <h3>Regras de triagem</h3>
+  <div class="card">
+    <ol>
+      <li><b>Brasília, presencial ou híbrido:</b> entra.</li>
+      <li><b>Remoto com Brasil, América Latina, Américas ou mundo todo:</b> entra.</li>
+      <li><b>Remoto restrito a outro país</b> (só EUA, só Europa): fica fora. Exceção a confirmar com a empresa: contrato de prestador que aceite profissional no exterior.</li>
+      <li><b>Fuso:</b> Brasília está em UTC−3. Empresas das Américas encaixam no horário comercial; com a Europa há sobreposição pela manhã.</li>
+      <li><b>Idioma:</b> o anúncio pode estar em qualquer língua. Confira no resumo qual idioma o trabalho exige no dia a dia.</li>
+      <li><b>Sinais de golpe:</b> pedido de pagamento para se candidatar, teste longo sem remuneração, contato só por aplicativo de mensagem. Descarte.</li>
+    </ol>
+  </div>
+
+  <h3>Buscas prontas</h3>
+  <div class="card" id="queries"></div>
+
+  <h3>Como medir</h3>
+  <div class="card">
+    <ul>
+      <li>Vagas novas que servem, por dia e por fonte.</li>
+      <li>Candidaturas enviadas na semana.</li>
+      <li>Respostas e entrevistas por fonte. Depois de quatro semanas, corte as fontes que não geraram resposta e dobre o tempo nas que geraram.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TRADUTOR -->
+<section class="view" id="view-tradutor" aria-label="Tradutor">
+  <h2>Tradutor de vagas</h2>
+  <p class="lede">Cada vaga em outro idioma tem o botão Ler em português, que abre o anúncio inteiro traduzido. Aqui você traduz qualquer outro texto: um anúncio colado ou a sua mensagem de candidatura.</p>
+  <div class="controls">
+    <label class="wide" style="grid-column:1/-1">O que fazer
+      <select id="trMode">
+        <option value="auto|pt">Traduzir para português do Brasil</option>
+        <option value="pt|en">Do português para inglês</option>
+        <option value="pt|es">Do português para espanhol</option>
+        <option value="pt|fr">Do português para francês</option>
+        <option value="pt|de">Do português para alemão</option>
+        <option value="pt|it">Do português para italiano</option>
+      </select>
+    </label>
+  </div>
+  <label for="trIn" class="hint">Texto (até 4.500 caracteres por vez)</label>
+  <textarea id="trIn" placeholder="Cole aqui o anúncio ou escreva sua mensagem"></textarea>
+  <div class="row">
+    <span class="hint" id="trMsg">A tradução abre no Google Tradutor, em outra aba.</span>
+    <a class="btn" id="trGo" href="https://translate.google.com/?sl=auto&amp;tl=pt&amp;op=translate" target="_blank" rel="noopener noreferrer">Abrir no Google Tradutor ↗</a>
+  </div>
+</section>
+
+</div></main>
+
+<footer><div class="wrap">Cada vaga abre no site de origem, onde a candidatura é feita. Fontes automáticas: Jobicy, We Work Remotely, Remote OK, Working Nomads, Himalayas e Jooble. Confirme sempre no anúncio original se a vaga continua aberta e se aceita quem mora no Brasil. Suas marcações de vagas salvas ficam guardadas só neste navegador.</div></footer>
+
+<script>
+(function(){
+"use strict";
+var $ = function(id){ return document.getElementById(id); };
+function el(tag, cls, text){ var e=document.createElement(tag); if(cls) e.className=cls; if(text!=null) e.textContent=text; return e; }
+function safeUrl(u){ return (typeof u==="string" && u.indexOf("https://")===0) ? u : null; }
+function str(v){ return (v==null) ? "" : String(v); }
+
+/* ---------- header tiles: quarter-circle azulejos, rotated at random ---------- */
+function drawTiles(){
+  var c=$("tiles"); if(!c) return;
+  var r=c.getBoundingClientRect(), dpr=Math.min(window.devicePixelRatio||1,2);
+  if(!r.width) return;
+  c.width=Math.round(r.width*dpr); c.height=Math.round(r.height*dpr);
+  var g=c.getContext("2d"); g.scale(dpr,dpr);
+  var cs=getComputedStyle(document.documentElement);
+  var surf=cs.getPropertyValue("--surface").trim(), acc=cs.getPropertyValue("--accent").trim(), line=cs.getPropertyValue("--line").trim();
+  g.fillStyle=surf; g.fillRect(0,0,r.width,r.height);
+  var s=34, seed=1960;
+  function rnd(){ seed=(seed*1664525+1013904223)%4294967296; return seed/4294967296; }
+  var startX=Math.max(0, r.width - Math.min(r.width*(r.width<640?0.3:0.5), 420));
+  for(var y=0;y<r.height;y+=s){
+    for(var x=Math.floor(startX/s)*s;x<r.width;x+=s){
+      var k=rnd(), rot=Math.floor(rnd()*4);
+      var fade=(x-startX)/(r.width-startX);
+      if(k>fade*1.15) continue;
+      g.save(); g.translate(x+s/2,y+s/2); g.rotate(rot*Math.PI/2); g.translate(-s/2,-s/2);
+      g.strokeStyle=line; g.lineWidth=1; g.strokeRect(.5,.5,s-1,s-1);
+      g.fillStyle=acc; g.beginPath(); g.moveTo(0,0); g.arc(0,0,s-3,0,Math.PI/2); g.closePath(); g.fill();
+      g.restore();
+    }
+  }
+}
+var tileTimer=null;
+function redrawSoon(){ clearTimeout(tileTimer); tileTimer=setTimeout(drawTiles,80); }
+window.addEventListener("resize",redrawSoon);
+try{ window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",redrawSoon); }catch(e){}
+try{ new MutationObserver(redrawSoon).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]}); }catch(e){}
+drawTiles();
+if(document.fonts && document.fonts.ready){ document.fonts.ready.then(redrawSoon); }
+
+/* ---------- tabs ---------- */
+var TABS=["vagas","fontes","rotina","tradutor"];
+function showTab(){
+  var h=(location.hash||"").replace("#","");
+  if(TABS.indexOf(h)<0) h="vagas";
+  TABS.forEach(function(t){
+    $("view-"+t).classList.toggle("on",t===h);
+    var a=document.querySelector('nav.tabs a[data-tab="'+t+'"]');
+    if(t===h) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current");
+  });
+}
+window.addEventListener("hashchange",showTab); showTab();
+
+/* ---------- state ---------- */
+var S={ jobs:[], meta:null, marks:{}, loaded:false, lang:"pt",
+        f:{elig:"serve", area:"todas", tipo:"todos", q:"", novas:false},
+        db:null, uid:null, marksRef:null, writing:Promise.resolve() };
+
+var ELIG={
+  bsb:{label:"Brasília", cls:"bsb", card:"e-bsb"},
+  br:{label:"Remoto · Brasil", cls:"ok", card:"e-ok"},
+  latam:{label:"Remoto · América Latina", cls:"ok", card:"e-ok"},
+  multi:{label:"Remoto · vários países, inclui Brasil", cls:"ok", card:"e-ok"},
+  mundo:{label:"Remoto · mundo todo", cls:"ok", card:"e-ok"},
+  restrito:{label:"Restrita a outro país", cls:"no", card:"e-no"}
+};
+var MODE={presencial:"Presencial", hibrido:"Híbrido", remoto:"Home office", confirmar:"Modelo a confirmar"};
+var TIPO={clt:"Emprego", contrato:"Projeto / PJ", estagio:"Estágio"};
+var AREA={grafico:"Gráfico e marca", uiux:"UI / UX / produto", motion:"Motion", direcao:"Direção de criação"};
+var LANG={en:"inglês", es:"espanhol", fr:"francês", de:"alemão", it:"italiano", pt:"português"};
+
+function today(){ var d=new Date(); return new Date(d.getFullYear(),d.getMonth(),d.getDate()); }
+function parseDay(s){ var m=/^(\d{4})-(\d{2})-(\d{2})/.exec(str(s)); return m? new Date(+m[1],+m[2]-1,+m[3]) : null; }
+function daysAgo(s){ var d=parseDay(s); if(!d) return null; return Math.round((today()-d)/86400000); }
+function ago(s){ var n=daysAgo(s); if(n==null) return "data não informada"; if(n<=0) return "hoje"; if(n===1) return "ontem"; return "há "+n+" dias"; }
+function brDate(s){ var d=parseDay(s); if(!d) return ""; return ("0"+d.getDate()).slice(-2)+"/"+("0"+(d.getMonth()+1)).slice(-2)+"/"+d.getFullYear(); }
+function isNew(j){ var n=daysAgo(j.posted); return n!=null && n<=3; }
+function serves(j){ return j.elig!=="restrito"; }
+function isRemote(j){ return ["br","latam","multi","mundo"].indexOf(j.elig)>=0; }
+
+function matches(j, withElig){
+  var f=S.f, m=S.marks[j.id];
+  if(withElig!==false){
+    if(f.elig==="serve" && (!serves(j) || m==="d")) return false;
+    if(f.elig==="bsb" && (j.elig!=="bsb" || m==="d")) return false;
+    if(f.elig==="remoto" && (!isRemote(j) || m==="d")) return false;
+    if(f.elig==="restrito" && j.elig!=="restrito") return false;
+    if(f.elig==="minhas" && m!=="s" && m!=="c") return false;
+  }
+  if(f.area!=="todas" && j.area!==f.area) return false;
+  if(f.tipo!=="todos" && j.contract!==f.tipo) return false;
+  if(f.novas && !isNew(j)) return false;
+  if(f.q){
+    var hay=(j.title+" "+j.title_pt+" "+j.company+" "+j.summary_pt+" "+j.location+" "+j.source).toLowerCase();
+    var parts=f.q.toLowerCase().split(/\s+/);
+    for(var i=0;i<parts.length;i++){ if(parts[i] && hay.indexOf(parts[i])<0) return false; }
+  }
+  return true;
+}
+function sorted(list){
+  return list.slice().sort(function(a,b){
+    var da=str(a.posted), dbb=str(b.posted);
+    if(da===dbb) return str(a.title_pt).localeCompare(str(b.title_pt));
+    if(!da) return 1; if(!dbb) return -1;
+    return da<dbb?1:-1;
+  });
+}
+
+/* ---------- render: chips ---------- */
+var CHIPS=[["serve","Servem para Brasília"],["bsb","Em Brasília"],["remoto","Home office"],["minhas","Salvas e candidaturas"],["restrito","Restritas a outro país"]];
+function renderChips(){
+  var box=$("eligChips"); box.textContent="";
+  CHIPS.forEach(function(c){
+    var keep=S.f.elig; S.f.elig=c[0];
+    var n=S.jobs.filter(function(j){ return matches(j); }).length;
+    S.f.elig=keep;
+    var b=el("button","chip"); b.type="button"; b.id="chip-"+c[0];
+    b.setAttribute("aria-pressed", String(S.f.elig===c[0]));
+    b.appendChild(el("span",null,c[1])); b.appendChild(el("span","n",String(n)));
+    b.addEventListener("click",function(){ S.f.elig=c[0]; render(); });
+    box.appendChild(b);
+  });
+}
+
+/* ---------- render: list ---------- */
+function jobCard(j){
+  var e=ELIG[j.elig]||ELIG.restrito, m=S.marks[j.id];
+  var card=el("article","job "+e.card+(m==="c"||m==="d"?" done":""));
+  var head=el("div","head");
+  var tbox=el("div");
+  var main=(S.lang==="pt" ? (j.title_pt||j.title) : (j.title||j.title_pt));
+  var other=(S.lang==="pt" ? j.title : j.title_pt);
+  tbox.appendChild(el("h3",null,main));
+  if(other && other!==main) tbox.appendChild(el("div","orig",other));
+  head.appendChild(tbox);
+  if(isNew(j)) head.appendChild(el("span","new","Nova"));
+  card.appendChild(head);
+  card.appendChild(el("div","co",j.company||"Empresa não informada"));
+
+  var tags=el("div","tags");
+  tags.appendChild(el("span","tag "+e.cls,e.label));
+  if(j.elig==="bsb" && MODE[j.mode]) tags.appendChild(el("span","tag",MODE[j.mode]));
+  if(TIPO[j.contract]) tags.appendChild(el("span","tag",TIPO[j.contract]));
+  if(AREA[j.area]) tags.appendChild(el("span","tag",AREA[j.area]));
+  if(j.pay) tags.appendChild(el("span","tag pay",j.pay));
+  if(j.lang && j.lang!=="pt" && LANG[j.lang]) tags.appendChild(el("span","tag","Anúncio em "+LANG[j.lang]));
+  card.appendChild(tags);
+
+  if(j.summary_pt) card.appendChild(el("p","sum",j.summary_pt));
+  if(j.note) card.appendChild(el("p","note",j.note));
+  var loc=j.location? j.location+" · " : "";
+  card.appendChild(el("div","meta",loc+(j.source||"fonte não informada")+" · "+ago(j.posted)));
+
+  var acts=el("div","acts");
+  var u=safeUrl(j.url);
+  if(u){ var a=el("a","btn small","Abrir vaga ↗"); a.href=u; a.target="_blank"; a.rel="noopener noreferrer"; acts.appendChild(a); }
+  if(u && j.lang && j.lang!=="pt"){ var tl=el("a","btn ghost small","Ler em português ↗"); tl.href="https://translate.google.com/translate?sl=auto&tl=pt&u="+encodeURIComponent(u); tl.target="_blank"; tl.rel="noopener noreferrer"; acts.appendChild(tl); }
+  [["s","Salvar","Salva"],["c","Já me candidatei","Candidatura enviada"],["d","Descartar","Descartada"]].forEach(function(x){
+    var b=el("button","btn ghost small", m===x[0]? x[2] : x[1]); b.type="button";
+    b.setAttribute("aria-pressed", String(m===x[0]));
+    b.addEventListener("click",function(){ setMark(j.id, m===x[0]? null : x[0]); });
+    acts.appendChild(b);
+  });
+  card.appendChild(acts);
+  return card;
+}
+function currentList(){ return sorted(S.jobs.filter(function(j){ return matches(j); })); }
+function render(){
+  renderChips();
+  var list=$("list"); list.textContent="";
+  var rows=currentList();
+  if(!S.loaded){ list.appendChild(el("div","empty","Carregando vagas…")); $("count").textContent=""; return; }
+  if(!S.jobs.length){
+    list.appendChild(el("div","empty","Ainda não há vagas na base. Elas aparecem aqui depois da primeira varredura."));
+    $("count").textContent=""; return;
+  }
+  $("count").textContent=rows.length+(rows.length===1?" vaga":" vagas")+" nesta lista · mais recentes primeiro";
+  if(!rows.length){ list.appendChild(el("div","empty","Nenhuma vaga com esses filtros. Limpe a busca ou troque a área.")); }
+  var frag=document.createDocumentFragment();
+  rows.forEach(function(j){ frag.appendChild(jobCard(j)); });
+  list.appendChild(frag);
+  if($("digestBox").classList.contains("on")) $("digestText").value=buildDigest();
+}
+function renderSweep(){
+  var box=$("sweepLine"); box.textContent="";
+  var m=S.meta;
+  if(!m){ box.textContent = S.loaded ? "Nenhuma varredura registrada ainda." : "Carregando a última varredura…"; return; }
+  function part(label,val){ var s=el("span"); s.appendChild(document.createTextNode(label+" ")); s.appendChild(el("b",null,val)); box.appendChild(s); }
+  if(m.date) part("Última varredura", brDate(m.date));
+  if(m.scanned!=null) part("Anúncios lidos", String(m.scanned));
+  if(m.sources!=null) part("Fontes", String(m.sources));
+  var ok=S.jobs.filter(serves).length;
+  if(S.jobs.length) part("Servem para Brasília", String(ok));
+}
+
+/* ---------- digest ---------- */
+function buildDigest(){
+  var rows=currentList(), out=[];
+  var d=(S.meta && S.meta.date)? brDate(S.meta.date) : brDate(new Date().toISOString());
+  out.push("RADAR DE VAGAS DE DESIGN · "+d);
+  out.push(rows.length+" oportunidades para quem mora em Brasília");
+  var groups=[["bsb","EM BRASÍLIA (presencial ou híbrido)"],["br","HOME OFFICE · BRASIL"],["latam","HOME OFFICE · AMÉRICA LATINA"],["multi","HOME OFFICE · VÁRIOS PAÍSES, INCLUI BRASIL"],["mundo","HOME OFFICE · MUNDO TODO"],["restrito","RESTRITAS A OUTRO PAÍS (confirmar)"]];
+  groups.forEach(function(g){
+    var part=rows.filter(function(j){ return j.elig===g[0]; });
+    if(!part.length) return;
+    out.push(""); out.push(g[1]);
+    part.forEach(function(j){
+      var line="• "+(j.title_pt||j.title)+" · "+(j.company||"empresa não informada");
+      if(j.pay) line+=" · "+j.pay;
+      line+=" · "+ago(j.posted);
+      out.push(line);
+      var u=safeUrl(j.url); if(u) out.push("  "+u);
+    });
+  });
+  return out.join("\n");
+}
+$("digestBtn").addEventListener("click",function(){
+  var box=$("digestBox"), on=!box.classList.contains("on");
+  box.classList.toggle("on",on);
+  this.textContent= on? "Fechar compilado" : "Gerar compilado";
+  if(on){ $("digestText").value=buildDigest(); $("digestMsg").textContent=""; }
+});
+$("digestCopy").addEventListener("click",function(){
+  var t=$("digestText"), msg=$("digestMsg");
+  function fallback(){ t.focus(); t.select(); msg.textContent="Texto selecionado. Use copiar no teclado."; }
+  try{
+    navigator.clipboard.writeText(t.value).then(function(){ msg.textContent="Copiado."; }, fallback);
+  }catch(e){ fallback(); }
+});
+
+/* ---------- filters ---------- */
+$("fArea").addEventListener("change",function(){ S.f.area=this.value; render(); });
+$("fTipo").addEventListener("change",function(){ S.f.tipo=this.value; render(); });
+var qTimer=null;
+$("fQ").addEventListener("input",function(){ var v=this.value; clearTimeout(qTimer); qTimer=setTimeout(function(){ S.f.q=v.trim(); render(); },160); });
+$("fNovas").addEventListener("click",function(){ S.f.novas=!S.f.novas; this.setAttribute("aria-pressed",String(S.f.novas)); render(); });
+function setLang(l){ S.lang=l; $("langPt").setAttribute("aria-pressed",String(l==="pt")); $("langOr").setAttribute("aria-pressed",String(l==="or")); render(); }
+$("langPt").addEventListener("click",function(){ setLang("pt"); });
+$("langOr").addEventListener("click",function(){ setLang("or"); });
+
+/* ---------- marks (kept in this browser) ---------- */
+var MKEY="radar-vagas-marks";
+function loadMarks(){
+  try{ var d=JSON.parse(localStorage.getItem(MKEY)||"{}"), m={}; Object.keys(d).forEach(function(k){ if(["s","c","d"].indexOf(d[k])>=0) m[k]=d[k]; }); S.marks=m; }catch(e){ S.marks={}; }
+}
+function setMark(id,val){
+  var next={}; Object.keys(S.marks).forEach(function(k){ next[k]=S.marks[k]; });
+  if(val) next[id]=val; else delete next[id];
+  S.marks=next; render();
+  try{ localStorage.setItem(MKEY,JSON.stringify(next)); }catch(e){}
+}
+
+/* ---------- data ---------- */
+function normJob(id,d){
+  d=d||{};
+  return { id:id, title:str(d.title), title_pt:str(d.title_pt), company:str(d.company), source:str(d.source), url:str(d.url),
+    location:str(d.location), elig:str(d.elig)||"restrito", mode:str(d.mode), contract:str(d.contract), area:str(d.area),
+    lang:str(d.lang), pay:str(d.pay), posted:str(d.posted), found:str(d.found), summary_pt:str(d.summary_pt), note:str(d.note) };
+}
+function boot(){
+  var note=$("loadNote");
+  loadMarks();
+  fetch("jobs.json?t="+Date.now(),{cache:"no-store"}).then(function(r){
+    if(!r.ok) throw new Error("http "+r.status);
+    return r.json();
+  }).then(function(d){
+    var list=Array.isArray(d && d.jobs)? d.jobs : [];
+    S.jobs=list.map(function(j,i){ return normJob(str(j && j.id)||("j"+i), j); });
+    S.meta=(d && d.meta && typeof d.meta==="object")? d.meta : null;
+    S.loaded=true; note.hidden=true; render(); renderSweep();
+  }).catch(function(){
+    S.loaded=true; render(); renderSweep();
+    note.hidden=false; note.textContent="Não foi possível carregar as vagas agora. Verifique a conexão e recarregue a página.";
+  });
+  initTranslator();
+}
+
+/* ---------- translator (opens Google Tradutor) ---------- */
+function initTranslator(){
+  var go=$("trGo"), msg=$("trMsg"), inp=$("trIn"), mode=$("trMode"), base="A tradução abre no Google Tradutor, em outra aba.";
+  function upd(){
+    var p=mode.value.split("|"), t=inp.value.trim(), long=t.length>4500;
+    if(long) t=t.slice(0,4500);
+    go.href="https://translate.google.com/?sl="+p[0]+"&tl="+p[1]+"&op=translate"+(t? "&text="+encodeURIComponent(t) : "");
+    msg.textContent= long ? "Texto longo: só os primeiros 4.500 caracteres vão para o tradutor. Envie o resto em seguida." : base;
+  }
+  inp.addEventListener("input",upd); mode.addEventListener("change",upd); upd();
+}
+
+/* ---------- sources directory ---------- */
+function li(q,extra){ return "https://www.linkedin.com/jobs/search/?keywords="+encodeURIComponent(q)+"&f_TPR=r86400"+extra; }
+var SOURCES=[
+ {group:"Varredura automática", items:[
+  {n:"Jobicy", how:"auto", d:"Vagas remotas com país ou região aceita em cada anúncio. Categoria de design e multimídia.", l:[["Abrir vagas","https://jobicy.com/jobs"]]},
+  {n:"We Work Remotely", how:"auto", d:"Um dos maiores quadros de trabalho remoto. Categoria de design, com região em cada vaga.", l:[["Design","https://weworkremotely.com/categories/remote-design-jobs"]]},
+  {n:"Remote OK", how:"auto", d:"Quadro remoto global. Mostra quando a vaga é mundial ou só de um país.", l:[["Design","https://remoteok.com/remote-design-jobs"]]},
+  {n:"Working Nomads", how:"auto", d:"Curadoria de vagas remotas, com categoria de design.", l:[["Abrir vagas","https://www.workingnomads.com/jobs"]]},
+  {n:"Himalayas", how:"auto", d:"Base grande de vagas remotas com filtro por país. Tem muitas empresas brasileiras contratando em remoto.", l:[["Abrir vagas","https://himalayas.app/jobs"]]},
+  {n:"Jooble · Distrito Federal", how:"auto", d:"Agregador que reúne anúncios de Brasília de vários sites de emprego.", l:[["Designer no DF","https://br.jooble.org/vagas-de-emprego-designer/Distrito-Federal"],["Web designer no DF","https://br.jooble.org/vagas-de-emprego-web-designer/Distrito-Federal"]]}
+ ]},
+ {group:"Brasília e Brasil · checagem manual diária", items:[
+  {n:"LinkedIn", how:"man", d:"Maior volume. Os links abrem só o que saiu nas últimas 24 horas.", l:[["Brasília","LI_BSB"],["Home office · Brasil","LI_BR"],["Home office · mundo","LI_WW"]]},
+  {n:"Indeed Brasil", how:"man", d:"Bom para vagas locais de agências, gráficas e órgãos em Brasília.", l:[["Brasília, 3 dias","https://br.indeed.com/jobs?q=designer&l=Bras%C3%ADlia%2C+DF&fromage=3"],["Remoto, 3 dias","https://br.indeed.com/jobs?q=designer+ux+ui&l=Remoto&fromage=3"]]},
+  {n:"Vagas.com", how:"man", d:"Empresas grandes com processo seletivo formal.", l:[["Designer em Brasília","https://www.vagas.com.br/vagas-de-designer-em-brasilia"],["Design gráfico em Brasília","https://www.vagas.com.br/vagas-de-design-grafico-em-brasilia"]]},
+  {n:"InfoJobs", how:"man", d:"Mostra no anúncio se é home office ou presencial.", l:[["Designer UX","https://www.infojobs.com.br/vagas-de-designer-ux.aspx"]]},
+  {n:"Gupy", how:"man", d:"Portal usado por grande parte das empresas brasileiras para receber candidaturas.", l:[["Buscar designer","https://portal.gupy.io/job-search/term=designer"]]},
+  {n:"Catho, trampos.co e Remotar", how:"man", d:"Catho para vagas tradicionais; trampos.co para comunicação e criação; Remotar só para home office no Brasil.", l:[["Catho","https://www.catho.com.br"],["trampos.co","https://trampos.co"],["Remotar","https://remotar.com.br"]]}
+ ]},
+ {group:"Quadros especializados em design", items:[
+  {n:"Dribbble Jobs", how:"man", d:"UI, UX, produto, marca e motion. O portfólio no próprio site pesa na seleção.", l:[["Abrir","https://dribbble.com/jobs"]]},
+  {n:"Behance Jobs", how:"man", d:"Design visual e ilustração, ligado ao portfólio da Adobe.", l:[["Abrir","https://www.behance.net/joblist"]]},
+  {n:"IxDF Jobs", how:"man", d:"Quadro da Interaction Design Foundation. Já listou vagas de UX em Brasília.", l:[["Abrir","https://ixdf.org/jobs"]]},
+  {n:"Coroflot e Design Jobs Board", how:"man", d:"Coroflot cobre várias disciplinas de design; Design Jobs Board é mais forte no Reino Unido e Europa.", l:[["Coroflot","https://www.coroflot.com/design-jobs"],["Design Jobs Board","https://designjobsboard.com/"]]},
+  {n:"Remotive", how:"man", d:"Vagas remotas com curadoria e categoria de design. O site não permite leitura automática, então entra na checagem manual.", l:[["Design","https://remotive.com/remote-jobs/design"]]}
+ ]},
+ {group:"Projetos e freelas remunerados", items:[
+  {n:"99Freelas e Workana", how:"man", d:"Projetos em português e espanhol, com pagamento intermediado pela plataforma.", l:[["99Freelas","https://www.99freelas.com.br/projects"],["Workana · design","https://www.workana.com/jobs?category=design-multimedia"]]},
+  {n:"Upwork", how:"man", d:"Maior mercado internacional de projetos. Pagamento em dólar.", l:[["Buscar UI UX","https://www.upwork.com/nx/search/jobs/?q=ui%20ux%20design"],["Buscar gráfico","https://www.upwork.com/nx/search/jobs/?q=graphic%20design"]]},
+  {n:"Contra, Fiverr e Freelancer.com", how:"man", d:"Contra para profissionais independentes; Fiverr para vender serviços fechados; Freelancer.com para projetos e concursos.", l:[["Contra","https://contra.com"],["Fiverr","https://www.fiverr.com"],["Freelancer.com","https://www.freelancer.com/jobs/graphic-design/"]]},
+  {n:"99designs", how:"man", d:"Concursos e projetos diretos de marca, embalagem e web.", l:[["Abrir","https://99designs.com"]]},
+  {n:"Superside, lemon.io e Toptal", how:"perfil", d:"Redes que contratam designers da América Latina por contrato, depois de seleção. Vale um cadastro único e acompanhar as vagas abertas.", l:[["Superside","https://careers.superside.com"],["lemon.io","https://lemon.io"],["Toptal","https://www.toptal.com"]]}
+ ]},
+ {group:"América Latina e outros idiomas", items:[
+  {n:"Get on Board e Torre", how:"man", d:"Vagas remotas para a América Latina, muitas em espanhol.", l:[["Get on Board","https://www.getonbrd.com"],["Torre","https://torre.ai"]]},
+  {n:"Jobgether", how:"man", d:"Vagas remotas com filtro pelo país de onde se pode trabalhar.", l:[["Abrir","https://jobgether.com"]]}
+ ]}
+];
+var HOW={auto:"Automática", man:"Manual", perfil:"Cadastro"};
+function renderSources(){
+  var box=$("srcGroups"); box.textContent="";
+  var LI={ LI_BSB:li("designer","&location="+encodeURIComponent("Brasília, Distrito Federal, Brasil")),
+           LI_BR:li("designer ux ui","&f_WT=2&location=Brasil"),
+           LI_WW:li("designer LATAM","&f_WT=2&geoId=92000000") };
+  SOURCES.forEach(function(g){
+    var wrap=el("div","group"); wrap.appendChild(el("h3",null,g.group));
+    g.items.forEach(function(s){
+      var c=el("div","src"), l1=el("div","line1");
+      l1.appendChild(el("span","name",s.n)); l1.appendChild(el("span","how "+s.how,HOW[s.how]));
+      c.appendChild(l1); c.appendChild(el("p",null,s.d));
+      var links=el("div","links");
+      s.l.forEach(function(x){ var a=el("a",null,x[0]+" ↗"); a.href=LI[x[1]]||x[1]; a.target="_blank"; a.rel="noopener noreferrer"; links.appendChild(a); });
+      c.appendChild(links); wrap.appendChild(c);
+    });
+    box.appendChild(wrap);
+    box.appendChild(el("div")).style.height="10px";
+  });
+}
+
+/* ---------- ready-made searches ---------- */
+var QUERIES=[
+ ["Brasília, em português (LinkedIn, Indeed, Google)", '("designer gráfico" OR "designer ux" OR "ui designer" OR "product designer" OR "diretor de arte" OR "web designer") Brasília'],
+ ["Home office que aceita Brasil, em inglês", '("graphic designer" OR "brand designer" OR "UX designer" OR "UI designer" OR "product designer") remote (LATAM OR "Latin America" OR Brazil OR worldwide OR anywhere)'],
+ ["Home office em espanhol", '("diseñador gráfico" OR "diseñador UX" OR "diseñador UI" OR "diseñador de producto") remoto (LATAM OR Latinoamérica OR Brasil)'],
+ ["Direto nos sistemas de candidatura das empresas (Google)", '(site:boards.greenhouse.io OR site:jobs.lever.co OR site:jobs.ashbyhq.com) ("product designer" OR "brand designer" OR "graphic designer") remote (LATAM OR Brazil OR "Latin America")'],
+ ["Projetos e freelas (Google)", '("freelance" OR "contract" OR "projeto" OR "freela") ("designer gráfico" OR "ui/ux designer" OR "identidade visual") remoto'],
+ ["Editais e contratações públicas em Brasília (Google)", '("design gráfico" OR "identidade visual" OR "diagramação") (edital OR "processo seletivo" OR credenciamento) Brasília DF']
+];
+function renderQueries(){
+  var box=$("queries"); box.textContent="";
+  QUERIES.forEach(function(q,i){
+    var d=el("div","q"); d.appendChild(el("span","lbl",q[0]));
+    var code=el("code",null,q[1]); d.appendChild(code);
+    var acts=el("div","acts");
+    var g=el("a","btn ghost small","Google, últimas 24 h ↗"); g.href="https://www.google.com/search?q="+encodeURIComponent(q[1])+"&tbs=qdr:d"; g.target="_blank"; g.rel="noopener noreferrer";
+    var b=el("button","btn ghost small","Copiar"); b.type="button"; b.id="qcopy-"+i;
+    b.addEventListener("click",function(){
+      try{ navigator.clipboard.writeText(q[1]).then(function(){ b.textContent="Copiado"; },function(){ b.textContent="Selecione o texto acima"; }); }
+      catch(e){ b.textContent="Selecione o texto acima"; }
+    });
+    acts.appendChild(g); acts.appendChild(b); d.appendChild(acts); box.appendChild(d);
+  });
+}
+
+renderSources(); renderQueries(); render(); renderSweep(); boot();
+})();
+</script>
+</body>
+</html>
