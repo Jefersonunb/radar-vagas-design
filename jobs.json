@@ -122,7 +122,20 @@
    "lang": "en",
    "posted": "2026-11-23",
    "found": "2026-11-24",
-   "summary_pt": "Peças de marca, campanha e digital para clientes globais, usando IA generativa junto com o ofício tradicional de design."
+   "summary_pt": "Peças de marca, campanha e digital para clientes globais, usando IA generativa junto com o ofício tradicional de design.",
+   "reqs": [
+    "Portfólio com pensamento conceitual e acabamento visual em marca, campanha e digital",
+    "Uso diário de ferramentas de IA generativa no processo criativo",
+    "Domínio de Adobe Creative Suite e Figma",
+    "Base sólida em tipografia, layout, cor e hierarquia visual",
+    "Inglês escrito e falado para interpretar briefings e defender decisões de design"
+   ],
+   "tools": [
+    "Adobe Creative Suite",
+    "Figma",
+    "IA generativa"
+   ],
+   "work_lang": "inglês"
   },
   {
    "id": "b60a51596e6c",
@@ -139,7 +152,20 @@
    "lang": "en",
    "posted": "2026-11-22",
    "found": "2026-11-24",
-   "summary_pt": "Lidera uma equipe criativa global em marca e anúncios, orienta designers e incorpora ferramentas de IA ao processo."
+   "summary_pt": "Lidera uma equipe criativa global em marca e anúncios, orienta designers e incorpora ferramentas de IA ao processo.",
+   "reqs": [
+    "5 anos ou mais como líder de criação, guiando equipes multidisciplinares",
+    "Portfólio em marca, apresentações e publicidade, com exemplos de trabalho apoiado por IA",
+    "Domínio avançado de Adobe Creative Suite, Figma e ferramentas de apresentação",
+    "Experiência em conduzir projetos e orientar outros designers",
+    "Inglês excelente"
+   ],
+   "tools": [
+    "Adobe Creative Suite",
+    "Figma",
+    "IA generativa"
+   ],
+   "work_lang": "inglês"
   },
   {
    "id": "e9159ecb64c3",
@@ -156,7 +182,20 @@
    "lang": "en",
    "posted": "2026-11-22",
    "found": "2026-11-24",
-   "summary_pt": "Conduz equipe criativa distribuída em marca, anúncios e apresentações, combinando mão na massa e mentoria."
+   "summary_pt": "Conduz equipe criativa distribuída em marca, anúncios e apresentações, combinando mão na massa e mentoria.",
+   "reqs": [
+    "5 anos ou mais como líder de criação, guiando equipes multidisciplinares",
+    "Portfólio forte em marca, apresentações e publicidade, com trabalho apoiado por IA",
+    "Domínio avançado de Adobe Creative Suite e Figma",
+    "Dar e receber feedback com clareza e conduzir conversas criativas e estratégicas com clientes",
+    "Inglês excelente"
+   ],
+   "tools": [
+    "Adobe Creative Suite",
+    "Figma",
+    "IA generativa"
+   ],
+   "work_lang": "inglês"
   },
   {
    "id": "3cd205ff1427",
@@ -173,7 +212,20 @@
    "lang": "en",
    "posted": "2026-11-18",
    "found": "2026-11-24",
-   "summary_pt": "Lidera equipe global de motion em anúncios animados, vídeos explicativos e promos, definindo a estratégia criativa."
+   "summary_pt": "Lidera equipe global de motion em anúncios animados, vídeos explicativos e promos, definindo a estratégia criativa.",
+   "reqs": [
+    "Experiência como líder de criação em agência internacional ou em time interno de empresa global de tecnologia",
+    "Portfólio forte de motion design",
+    "Domínio de After Effects e Premiere, com animação e edição de vídeo",
+    "Fluxos de motion com IA, como Midjourney, Runway e Krea",
+    "Inglês excelente"
+   ],
+   "tools": [
+    "After Effects",
+    "Premiere",
+    "IA generativa"
+   ],
+   "work_lang": "inglês"
   },
   {
    "id": "bfeb435c9149",
@@ -343,7 +395,15 @@
    "posted": "2026-11-21",
    "found": "2026-11-24",
    "summary_pt": "Responde de ponta a ponta pelo design de produtos de mercados de previsão, para varejo e clientes institucionais.",
-   "note": "Anunciada como mundial. Confirme no anúncio se a empresa contrata no Brasil."
+   "note": "Anunciada como mundial. Confirme no anúncio se a empresa contrata no Brasil.",
+   "reqs": [
+    "5 anos ou mais de experiência em design de produto",
+    "Transformar requisitos de negócio e pesquisa com usuários em soluções para problemas complexos",
+    "Conduzir a jornada inteira: conceito, protótipo, teste com usuários e produção",
+    "Criar experiências para web e celular",
+    "Contribuir com novos padrões para o design system"
+   ],
+   "work_lang": "inglês"
   },
   {
    "id": "bbca60b1bc32",
@@ -396,7 +456,19 @@
    "lang": "en",
    "posted": "2026-11-05",
    "found": "2026-11-24",
-   "summary_pt": "Contrato remoto para designer sênior de criação e web em um estúdio de design."
+   "summary_pt": "Contrato remoto para designer sênior de criação e web em um estúdio de design.",
+   "reqs": [
+    "Sites no ar desenhados por você, para mostrar",
+    "Direção criativa demonstrável",
+    "Design responsivo e para celular",
+    "Experiência em UI/UX",
+    "Diferenciais: design de marca, ilustração e ícones"
+   ],
+   "tools": [
+    "Figma",
+    "Sketch"
+   ],
+   "work_lang": "inglês"
   },
   {
    "id": "b340e009b97d",
@@ -413,7 +485,14 @@
    "lang": "en",
    "posted": "2026-10-29",
    "found": "2026-11-24",
-   "summary_pt": "Vaga em tempo integral de design de marca, anunciada para qualquer lugar do mundo."
+   "summary_pt": "Vaga em tempo integral de design de marca, anunciada para qualquer lugar do mundo.",
+   "reqs": [
+    "3 a 5 anos em design de marca, visual ou de marketing, de preferência em startup",
+    "Portfólio forte, pedido expressamente no anúncio",
+    "Conduzir projetos do conceito à produção: site, campanhas, conteúdo digital, eventos e impressos",
+    "Apresentar e defender ideias junto a marketing, produto e design"
+   ],
+   "work_lang": "inglês"
   },
   {
    "id": "4aa7722f6f57",
@@ -431,7 +510,22 @@
    "posted": "2026-10-21",
    "found": "2026-11-24",
    "summary_pt": "Vaga em tempo integral de design gráfico, anunciada para qualquer lugar do mundo.",
-   "note": "Publicada há mais de um mês. Veja se continua aberta."
+   "note": "Publicada há mais de um mês. Veja se continua aberta.",
+   "reqs": [
+    "Portfólio forte com projetos relevantes",
+    "Entender a estética do mercado dos Estados Unidos",
+    "Experiência em e-commerce ou varejo, de preferência com empresa dos Estados Unidos",
+    "Pelo menos 2 anos de experiência em UX/UI",
+    "Inglês em nível B2 ou superior"
+   ],
+   "tools": [
+    "Photoshop",
+    "Illustrator",
+    "Figma",
+    "After Effects",
+    "IA generativa"
+   ],
+   "work_lang": "inglês (B2 ou superior)"
   },
   {
    "id": "952810d28522",

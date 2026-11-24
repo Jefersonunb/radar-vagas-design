@@ -152,6 +152,30 @@ select,input[type="search"],textarea{width:100%;background:var(--surface);border
 #trOut{white-space:pre-wrap;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;min-height:120px;max-width:70ch;overflow-wrap:anywhere}
 #trIn{min-height:170px}
 .hint{font-size:13.5px;color:var(--muted)}
+/* job detail */
+.dhead{display:flex;flex-direction:column;gap:8px}
+.dhead h2{font-size:28px;margin:0;overflow-wrap:anywhere}
+.dhead .orig{font-size:14px;color:var(--muted);overflow-wrap:anywhere}
+.dhead .co{font-weight:600;font-size:17px}
+.dhead .meta{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.dsec{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.dsec ul,.dsec ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;max-width:65ch}
+.dsec p{max-width:65ch}
+.dsec .sub{font-weight:600;font-size:14.5px}
+.dsec .links{display:flex;flex-direction:column;gap:8px;font-size:15.5px}
+.dsec .acts{display:flex;flex-wrap:wrap;gap:8px}
+.alert{border-left:5px solid var(--warn);background:var(--warn-soft);border-radius:0 10px 10px 0;padding:9px 12px;font-size:15px;max-width:70ch}
+.alert.good{border-left-color:var(--ok);background:var(--ok-soft)}
+.fields{display:grid;grid-template-columns:1fr;gap:10px}
+.fields label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--muted);min-width:0}
+.fields input{width:100%;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:16px}
+.msg{white-space:pre-wrap;font-family:var(--mono);font-size:13.5px;line-height:1.5;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px;overflow-wrap:anywhere}
+.checks{list-style:none;padding-left:0!important}
+.checks label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.checks input{width:20px;height:20px;margin-top:2px;flex:0 0 auto;accent-color:var(--accent)}
+.job h3 a{color:inherit;text-decoration:none}
+.job h3 a:hover{text-decoration:underline}
+@media (min-width:640px){ .fields{grid-template-columns:1fr 1fr} }
 footer{color:var(--muted);font-size:13px;padding:0 0 40px}
 footer .wrap{border-top:1px solid var(--line);padding-top:14px;max-width:860px}
 @media (min-width:640px){
@@ -226,6 +250,11 @@ footer .wrap{border-top:1px solid var(--line);padding-top:14px;max-width:860px}
   <div class="count" id="count" aria-live="polite"></div>
   <div id="loadNote" class="notice" hidden></div>
   <div id="list"><div class="empty">Carregando vagas…</div></div>
+</section>
+
+<!-- DETALHE DA VAGA -->
+<section class="view" id="view-detalhe" aria-label="Detalhes da vaga">
+  <div id="detail" style="display:flex;flex-direction:column;gap:14px"></div>
 </section>
 
 <!-- FONTES -->
@@ -314,7 +343,7 @@ footer .wrap{border-top:1px solid var(--line);padding-top:14px;max-width:860px}
 
 </div></main>
 
-<footer><div class="wrap">Cada vaga abre no site de origem, onde a candidatura é feita. Fontes automáticas: Jobicy, We Work Remotely, Remote OK, Working Nomads, Himalayas e Jooble. Confirme sempre no anúncio original se a vaga continua aberta e se aceita quem mora no Brasil. Suas marcações de vagas salvas ficam guardadas só neste navegador.</div></footer>
+<footer><div class="wrap">Cada vaga abre no site de origem, onde a candidatura é feita. Fontes automáticas: Jobicy, We Work Remotely, Remote OK, Working Nomads, Himalayas e Jooble. Confirme sempre no anúncio original se a vaga continua aberta e se aceita quem mora no Brasil. Suas marcações, listas de conferência, nome e link de portfólio ficam guardados só neste navegador.</div></footer>
 
 <script>
 (function(){
@@ -359,19 +388,25 @@ if(document.fonts && document.fonts.ready){ document.fonts.ready.then(redrawSoon
 
 /* ---------- tabs ---------- */
 var TABS=["vagas","fontes","rotina","tradutor"];
+var OPEN=null, listScroll=0;
 function showTab(){
   var h=(location.hash||"").replace("#","");
-  if(TABS.indexOf(h)<0) h="vagas";
+  var isJob=h.indexOf("vaga-")===0;
+  if(!isJob && TABS.indexOf(h)<0) h="vagas";
   TABS.forEach(function(t){
-    $("view-"+t).classList.toggle("on",t===h);
+    $("view-"+t).classList.toggle("on",!isJob && t===h);
     var a=document.querySelector('nav.tabs a[data-tab="'+t+'"]');
-    if(t===h) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current");
+    if(t===h || (isJob && t==="vagas")) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current");
   });
+  $("view-detalhe").classList.toggle("on",isJob);
+  OPEN = isJob ? h.slice(5) : null;
+  if(isJob){ renderDetail(); window.scrollTo(0,0); }
+  else if(h==="vagas" && listScroll){ var y=listScroll; listScroll=0; setTimeout(function(){ window.scrollTo(0,y); },0); }
 }
-window.addEventListener("hashchange",showTab); showTab();
+window.addEventListener("hashchange",showTab);
 
 /* ---------- state ---------- */
-var S={ jobs:[], meta:null, marks:{}, loaded:false, lang:"pt",
+var S={ jobs:[], meta:null, marks:{}, checks:{}, profile:{name:"",portfolio:""}, loaded:false, lang:"pt",
         f:{elig:"serve", area:"todas", tipo:"todos", q:"", novas:false},
         db:null, uid:null, marksRef:null, writing:Promise.resolve() };
 
@@ -449,7 +484,9 @@ function jobCard(j){
   var tbox=el("div");
   var main=(S.lang==="pt" ? (j.title_pt||j.title) : (j.title||j.title_pt));
   var other=(S.lang==="pt" ? j.title : j.title_pt);
-  tbox.appendChild(el("h3",null,main));
+  var h3=el("h3"), ta=el("a",null,main); ta.href="#vaga-"+j.id;
+  ta.addEventListener("click",function(){ listScroll=window.scrollY; });
+  h3.appendChild(ta); tbox.appendChild(h3);
   if(other && other!==main) tbox.appendChild(el("div","orig",other));
   head.appendChild(tbox);
   if(isNew(j)) head.appendChild(el("span","new","Nova"));
@@ -472,8 +509,10 @@ function jobCard(j){
 
   var acts=el("div","acts");
   var u=safeUrl(j.url);
-  if(u){ var a=el("a","btn small","Abrir vaga ↗"); a.href=u; a.target="_blank"; a.rel="noopener noreferrer"; acts.appendChild(a); }
-  if(u && j.lang && j.lang!=="pt"){ var tl=el("a","btn ghost small","Ler em português ↗"); tl.href="https://translate.google.com/translate?sl=auto&tl=pt&u="+encodeURIComponent(u); tl.target="_blank"; tl.rel="noopener noreferrer"; acts.appendChild(tl); }
+  var dl=el("a","btn small","Detalhes e como se candidatar"); dl.href="#vaga-"+j.id;
+  dl.addEventListener("click",function(){ listScroll=window.scrollY; });
+  acts.appendChild(dl);
+  if(u){ var a=el("a","btn ghost small","Abrir vaga ↗"); a.href=u; a.target="_blank"; a.rel="noopener noreferrer"; acts.appendChild(a); }
   [["s","Salvar","Salva"],["c","Já me candidatei","Candidatura enviada"],["d","Descartar","Descartada"]].forEach(function(x){
     var b=el("button","btn ghost small", m===x[0]? x[2] : x[1]); b.type="button";
     b.setAttribute("aria-pressed", String(m===x[0]));
@@ -484,7 +523,8 @@ function jobCard(j){
   return card;
 }
 function currentList(){ return sorted(S.jobs.filter(function(j){ return matches(j); })); }
-function render(){
+function render(){ renderList(); if(OPEN) renderDetail(); }
+function renderList(){
   renderChips();
   var list=$("list"); list.textContent="";
   var rows=currentList();
@@ -557,16 +597,248 @@ function setLang(l){ S.lang=l; $("langPt").setAttribute("aria-pressed",String(l=
 $("langPt").addEventListener("click",function(){ setLang("pt"); });
 $("langOr").addEventListener("click",function(){ setLang("or"); });
 
-/* ---------- marks (kept in this browser) ---------- */
-var MKEY="radar-vagas-marks";
-function loadMarks(){
-  try{ var d=JSON.parse(localStorage.getItem(MKEY)||"{}"), m={}; Object.keys(d).forEach(function(k){ if(["s","c","d"].indexOf(d[k])>=0) m[k]=d[k]; }); S.marks=m; }catch(e){ S.marks={}; }
+/* ---------- job detail ---------- */
+function strList(v,max){ if(!Array.isArray(v)) return []; return v.map(str).filter(Boolean).slice(0,max); }
+function cleanState(d){
+  d=d||{}; var m={},k={},p={name:"",portfolio:""};
+  if(d.m && typeof d.m==="object") Object.keys(d.m).forEach(function(x){ if(["s","c","d"].indexOf(d.m[x])>=0) m[x]=d.m[x]; });
+  if(d.k && typeof d.k==="object") Object.keys(d.k).forEach(function(x){ if(Array.isArray(d.k[x])) k[x]=d.k[x].slice(0,12).map(Boolean); });
+  if(d.p && typeof d.p==="object"){ p.name=str(d.p.name).slice(0,80); p.portfolio=str(d.p.portfolio).slice(0,200); }
+  S.marks=m; S.checks=k; S.profile=p;
 }
+function ext(text,href){ var a=el("a",null,text+" ↗"); a.href=href; a.target="_blank"; a.rel="noopener noreferrer"; return a; }
+function listOf(items,ordered,cls){ var u=el(ordered?"ol":"ul",cls); items.forEach(function(t){ u.appendChild(el("li",null,t)); }); return u; }
+function sec(title){ var s=el("div","dsec"); s.appendChild(el("h3",null,title)); return s; }
+function level(j){
+  var t=(j.title+" "+j.title_pt).toLowerCase();
+  if(j.contract==="estagio" || /est[áa]gio|intern\b|trainee|j[úu]nior|\bjr\b/.test(t)) return "jr";
+  if(/s[êe]nior|\bsr\b|lead|l[íi]der|staff|head|principal|manager|gerente|director|diretor/.test(t)) return "sr";
+  return "pl";
+}
+function jobLang(j){ return (j.lang==="pt"||j.lang==="es") ? j.lang : "en"; }
+function roleTitle(j){
+  var t=j.title||j.title_pt;
+  if(j.company && t.toLowerCase().indexOf(j.company.toLowerCase()+":")===0) t=t.slice(j.company.length+1).trim();
+  return t;
+}
+function buildMessage(j){
+  var lang=jobLang(j), co=j.company, remote=isRemote(j)||j.elig==="restrito";
+  var ROLE={ en:{grafico:"a graphic and brand designer",uiux:"a UI/UX designer",motion:"a motion designer",direcao:"a creative lead"},
+             es:{grafico:"profesional de diseño gráfico y de marca",uiux:"profesional de diseño UI/UX",motion:"profesional de motion design",direcao:"líder de equipos creativos"},
+             pt:{grafico:"designer com foco em design gráfico e marca",uiux:"designer de UI/UX",motion:"motion designer",direcao:"líder de criação"} };
+  var role=ROLE[lang][j.area] || {en:"a designer",es:"profesional de diseño",pt:"designer"}[lang];
+  var PH={ en:["[Your name]","[portfolio link]","[One or two lines on your most relevant project and its result.]"],
+           es:["[Tu nombre]","[enlace del portafolio]","[Una o dos líneas sobre tu proyecto más relevante y su resultado.]"],
+           pt:["[Seu nome]","[link do portfólio]","[Uma ou duas linhas sobre seu projeto mais relevante e o resultado.]"] }[lang];
+  var n=S.profile.name.trim()||PH[0], pf=S.profile.portfolio.trim()||PH[1];
+  if(lang==="en") return "Hello"+(co? " "+co+" team":"")+",\n\nI'm "+n+", "+role+" based in Brasília, Brazil (UTC−3). I'm applying for the "+roleTitle(j)+" role.\n\n"+PH[2]+"\n\nPortfolio: "+pf+"\n\n"+(remote? "I work remotely and can overlap with your team's working hours.":"I live in Brasília and am available to work on site.")+" I'd be glad to share more details on a short call.\n\nBest regards,\n"+n;
+  if(lang==="es") return "Hola"+(co? ", equipo de "+co:"")+":\n\nSoy "+n+", "+role+", y vivo en Brasilia, Brasil (UTC−3). Me postulo al puesto de "+roleTitle(j)+".\n\n"+PH[2]+"\n\nPortafolio: "+pf+"\n\nTrabajo en remoto y puedo coincidir con el horario de su equipo. Quedo a disposición para una llamada breve.\n\nSaludos cordiales,\n"+n;
+  return "Olá"+(co? ", equipe "+co:"")+"!\n\nSou "+n+", "+role+", e moro em Brasília. Tenho interesse na vaga de "+(j.title_pt||j.title)+".\n\n"+PH[2]+"\n\nPortfólio: "+pf+"\n\n"+(j.elig==="bsb"? "Tenho disponibilidade para trabalho presencial ou híbrido em Brasília.":"Trabalho em home office, no horário comercial de Brasília.")+" Fico à disposição para uma conversa.\n\nAtenciosamente,\n"+n;
+}
+function checkItems(j){
+  var foreign=j.lang && j.lang!=="pt";
+  return [
+    j.elig==="bsb" ? "Confirmei que a vaga está aberta e qual é o modelo de trabalho" : "Confirmei que a vaga está aberta e aceita quem mora no Brasil",
+    "Currículo ajustado para esta vaga, em PDF"+(foreign? " e em "+(LANG[j.lang]||"inglês"):""),
+    "Portfólio com os projetos certos no topo e link testado",
+    "Mensagem de apresentação revisada, com meu projeto mais relevante",
+    "Formulário enviado",
+    "Marquei Já me candidatei e anotei a data para acompanhar"
+  ];
+}
+function renderDetail(){
+  var box=$("detail"); if(!box) return;
+  box.textContent="";
+  var back=el("a","btn ghost small","← Voltar para as vagas"); back.href="#vagas"; back.style.alignSelf="flex-start"; box.appendChild(back);
+  if(!S.loaded){ box.appendChild(el("div","empty","Carregando a vaga…")); return; }
+  var j=null; for(var i=0;i<S.jobs.length;i++){ if(S.jobs[i].id===OPEN){ j=S.jobs[i]; break; } }
+  if(!j){ box.appendChild(el("div","empty","Esta vaga não está mais na base. Ela pode ter sido encerrada ou removida na limpeza diária.")); return; }
+  var e=ELIG[j.elig]||ELIG.restrito, m=S.marks[j.id], u=safeUrl(j.url), foreign=j.lang && j.lang!=="pt";
+  var lname=LANG[j.lang]||"inglês", lv=level(j), n=daysAgo(j.posted), remote=isRemote(j);
+  var tr= u ? "https://translate.google.com/translate?sl=auto&tl=pt&u="+encodeURIComponent(u) : null;
+
+  /* header */
+  var hd=el("div","dhead");
+  hd.appendChild(el("h2",null,j.title_pt||j.title));
+  if(j.title && j.title!==j.title_pt) hd.appendChild(el("div","orig",j.title));
+  hd.appendChild(el("div","co",j.company||"Empresa não informada"));
+  var tags=el("div","tags");
+  tags.appendChild(el("span","tag "+e.cls,e.label));
+  if(j.elig==="bsb" && MODE[j.mode]) tags.appendChild(el("span","tag",MODE[j.mode]));
+  if(TIPO[j.contract]) tags.appendChild(el("span","tag",TIPO[j.contract]));
+  if(AREA[j.area]) tags.appendChild(el("span","tag",AREA[j.area]));
+  if(j.pay) tags.appendChild(el("span","tag pay",j.pay));
+  if(foreign) tags.appendChild(el("span","tag","Anúncio em "+lname));
+  hd.appendChild(tags);
+  hd.appendChild(el("div","meta",(j.location? j.location+" · ":"")+(j.source||"fonte não informada")+" · "+ago(j.posted)));
+  var ha=el("div","acts"); ha.style.display="flex"; ha.style.flexWrap="wrap"; ha.style.gap="8px";
+  if(u){ var o=el("a","btn","Abrir anúncio original ↗"); o.href=u; o.target="_blank"; o.rel="noopener noreferrer"; ha.appendChild(o); }
+  if(tr && foreign){ var t2=el("a","btn ghost","Ler em português ↗"); t2.href=tr; t2.target="_blank"; t2.rel="noopener noreferrer"; ha.appendChild(t2); }
+  [["s","Salvar","Salva"],["c","Já me candidatei","Candidatura enviada"]].forEach(function(x){
+    var b=el("button","btn ghost", m===x[0]? x[2] : x[1]); b.type="button"; b.setAttribute("aria-pressed",String(m===x[0]));
+    b.addEventListener("click",function(){ setMark(j.id, m===x[0]? null : x[0]); });
+    ha.appendChild(b);
+  });
+  hd.appendChild(ha); box.appendChild(hd);
+
+  /* alerts */
+  if(j.elig==="restrito") box.appendChild(el("div","alert","Esta vaga está marcada como restrita a outro país. Só vale o esforço se o anúncio abrir exceção para prestadores no exterior."));
+  else if(j.elig==="mundo") box.appendChild(el("div","alert","Anunciada como mundial. Antes de preparar material, procure no anúncio onde a empresa pode contratar (termos como location, eligibility, countries)."));
+  else if(j.elig==="bsb") box.appendChild(el("div","alert good", j.mode==="confirmar" ? "Vaga em Brasília. O anúncio não diz se é presencial ou híbrida: pergunte no primeiro contato." : "Vaga em Brasília, "+(MODE[j.mode]||"presencial").toLowerCase()+"."));
+  else box.appendChild(el("div","alert good","Home office que aceita quem mora no Brasil."));
+  if(n==null) box.appendChild(el("div","alert","Sem data de publicação confirmada. Veja no anúncio se a vaga continua aberta."));
+  else if(n>30) box.appendChild(el("div","alert","Publicada há "+n+" dias. Confira se continua aberta antes de preparar material."));
+  if(j.deadline && parseDay(j.deadline)) box.appendChild(el("div","alert","Prazo informado no anúncio: "+brDate(j.deadline)+"."));
+
+  /* about */
+  var s1=sec("O que a vaga pede");
+  if(j.summary_pt) s1.appendChild(el("p",null,j.summary_pt));
+  if(j.reqs.length){ s1.appendChild(el("div","sub","Requisitos principais")); s1.appendChild(listOf(j.reqs)); }
+  else s1.appendChild(el("p","hint","Os requisitos completos estão no anúncio original."+(foreign? " Use Ler em português para ver tudo traduzido.":"")));
+  if(j.tools.length) s1.appendChild(el("p",null,"Ferramentas: "+j.tools.join(", ")+"."));
+  if(j.work_lang) s1.appendChild(el("p",null,"Idioma no trabalho: "+j.work_lang+"."));
+  else if(foreign) s1.appendChild(el("p",null,"Idioma no trabalho: o anúncio está em "+lname+", então conte com "+lname+" no dia a dia."));
+  if(j.note) s1.appendChild(el("p","note",j.note));
+  box.appendChild(s1);
+
+  /* how to apply */
+  var s2=sec("Como enviar a candidatura"), steps=[];
+  if(j.apply) steps.push("O anúncio pede: "+j.apply);
+  if(j.source==="Jooble") steps.push("Abra o anúncio. O Jooble reúne vagas de outros sites, então o botão de candidatura leva ao site onde a vaga foi publicada, que pode pedir cadastro.");
+  else if(j.source==="IxDF Jobs") steps.push("Abra o anúncio no quadro da IxDF e siga o botão de candidatura, que leva ao site da empresa.");
+  else steps.push("Abra o anúncio e use o botão de candidatura (Apply). Ele costuma levar ao formulário da própria empresa.");
+  if(foreign) steps.push("Use Ler em português para entender tudo, mas responda ao formulário em "+lname+".");
+  steps.push(j.elig==="bsb" ? "Confirme três pontos antes de preparar material: a vaga continua aberta, o endereço e o modelo de trabalho, e o tipo de contrato." : "Confirme três pontos antes de preparar material: a vaga continua aberta, aceita quem mora no Brasil, e o tipo de contrato.");
+  steps.push("Escolha três ou quatro requisitos que você atende e ligue cada um a um projeto do seu portfólio.");
+  steps.push("Ajuste o currículo e o portfólio conforme as orientações abaixo.");
+  steps.push("Preencha o formulário. Nas perguntas abertas, use a mensagem de apresentação abaixo como base.");
+  steps.push("Volte aqui e marque Já me candidatei. Sem resposta em 7 a 10 dias, envie uma mensagem curta de acompanhamento se o anúncio tiver contato.");
+  s2.appendChild(listOf(steps,true));
+  if(j.contract==="estagio") s2.appendChild(el("p","hint","Estágio exige matrícula ativa em curso superior ou técnico e termo de compromisso assinado com a instituição de ensino."));
+  else if(j.contract==="contrato" && j.elig==="bsb") s2.appendChild(el("p","hint","É contratação como PJ ou por projeto. Combine escopo, prazo e forma de pagamento por escrito."));
+  else if(j.contract==="contrato") s2.appendChild(el("p","hint","É contratação como prestador. Pergunte como é feito o pagamento e se a empresa exige nota fiscal ou invoice. Sobre a melhor forma de se formalizar, fale com um contador."));
+  else if(remote && j.elig!=="br") s2.appendChild(el("p","hint","Empresas de fora costumam contratar brasileiros por meio de uma intermediária de folha ou como prestadores. Pergunte qual é o caso desta vaga."));
+  box.appendChild(s2);
+
+  /* resume */
+  var s3=sec("Currículo para esta vaga"), cv=[];
+  if(foreign){
+    cv.push("Em "+lname+", com uma página (duas no máximo, para nível sênior).");
+    cv.push("No topo: nome, Brasília, Brazil (UTC−3), e-mail, LinkedIn e link do portfólio.");
+    cv.push("Sem foto, idade, estado civil ou números de documentos.");
+  } else {
+    cv.push("Em português, com uma a duas páginas.");
+    cv.push("No topo: nome, Brasília/DF, telefone, e-mail, LinkedIn e link do portfólio.");
+    cv.push("Sem números de documentos. Foto não é necessária.");
+  }
+  cv.push("Experiências da mais recente para a mais antiga, cada uma com um resultado medido quando houver (prazo, alcance, conversão).");
+  cv.push("Repita as palavras do anúncio para cargo e ferramentas: muitos formulários filtram por esses termos.");
+  if(j.tools.length) cv.push("Cite as ferramentas pedidas que você domina: "+j.tools.join(", ")+".");
+  if(lv==="sr") cv.push("Destaque liderança: tamanho das equipes, projetos que conduziu e pessoas que orientou.");
+  if(lv==="jr") cv.push("Vale incluir projetos acadêmicos, cursos e trabalhos voluntários, dizendo o que você fez em cada um.");
+  if(j.contract==="estagio") cv.push("Informe curso, instituição, semestre e previsão de formatura.");
+  if(foreign) cv.push("Informe seu nível de "+lname+" com honestidade.");
+  cv.push("Arquivo em PDF, com nome no padrão "+(foreign? "Nome-Sobrenome-Resume.pdf":"Nome-Sobrenome-Curriculo.pdf")+".");
+  s3.appendChild(listOf(cv)); box.appendChild(s3);
+
+  /* portfolio */
+  var s4=sec("Portfólio para esta vaga"), pf=[];
+  if(j.area==="uiux"){
+    pf.push("Dois ou três estudos de caso completos valem mais do que muitas telas soltas.");
+    pf.push("Em cada caso: o problema, o seu papel, a pesquisa, fluxos e wireframes, a interface final e o que mudou depois, com dados mesmo que aproximados.");
+    pf.push("Inclua um protótipo navegável do Figma com link aberto.");
+    pf.push("Se trabalhou com design system, mostre o que você criou ou manteve.");
+  } else if(j.area==="motion"){
+    pf.push("Reel de 60 a 90 segundos, com o melhor trabalho nos primeiros 10.");
+    pf.push("Depois do reel, dois ou três projetos com storyboard, quadros de estilo e o que você animou.");
+    pf.push("Em trabalhos de equipe, diga quais partes são suas.");
+  } else if(j.area==="direcao"){
+    pf.push("Mostre campanhas ou sistemas de marca que você conduziu, do conceito ao resultado.");
+    pf.push("Deixe claro o seu papel: a direção que deu, a equipe envolvida e as decisões que tomou.");
+    pf.push("Inclua resultados do cliente e, se possível, antes e depois.");
+  } else {
+    pf.push("Abra com quatro a seis projetos, os mais parecidos com o que a vaga pede.");
+    pf.push("Mostre identidade visual aplicada, peças de campanha e adaptações para vários formatos.");
+    pf.push("Em cada projeto: o pedido, a sua função, o processo em duas ou três imagens e o resultado.");
+    if(j.elig==="bsb") pf.push("Para agências e gráficas, mostre arte-final: arquivo fechado, sangria, CMYK e Pantone quando houver.");
+  }
+  var wantsAI=(j.tools.join(" ")+" "+j.reqs.join(" ")).toLowerCase().indexOf("ia")>=0 && /\bia\b/i.test(j.tools.join(" ")+" "+j.reqs.join(" "));
+  if(wantsAI) pf.push("A vaga pede uso de IA: inclua um projeto dizendo onde a IA entrou e o que foi decisão sua.");
+  if(lv==="sr") pf.push("Inclua um caso que mostre liderança e orientação de outros designers.");
+  if(lv==="jr") pf.push("Projetos de curso e pessoais são bem-vindos, desde que mostrem o processo.");
+  if(foreign) pf.push("Textos dos projetos em "+lname+".");
+  pf.push("Link que abre sem login, no Behance, no Dribbble ou em site próprio. Teste em janela anônima e no celular.");
+  s4.appendChild(listOf(pf)); box.appendChild(s4);
+
+  /* message */
+  var mlang=jobLang(j), s5=sec("Mensagem de apresentação em "+LANG[mlang]);
+  s5.appendChild(el("p","hint","Preencha seu nome e o link do portfólio. O texto se ajusta a esta vaga. Troque o trecho entre colchetes pelo seu projeto mais relevante."));
+  var fl=el("div","fields");
+  function field(id,label,val,ph,max){ var l=el("label",null,label), inp=el("input"); inp.type="text"; inp.id=id; inp.value=val; inp.placeholder=ph; inp.maxLength=max; inp.autocomplete="off"; l.appendChild(inp); fl.appendChild(l); return inp; }
+  var fn=field("pfName","Seu nome",S.profile.name,"Nome e sobrenome",80), fp=field("pfLink","Link do portfólio",S.profile.portfolio,"https://",200);
+  s5.appendChild(fl);
+  var msg=el("div","msg",buildMessage(j)); msg.id="msgOut"; s5.appendChild(msg);
+  function upd(){ S.profile={name:fn.value,portfolio:fp.value}; msg.textContent=buildMessage(j); }
+  fn.addEventListener("input",upd); fp.addEventListener("input",upd);
+  fn.addEventListener("change",persist); fp.addEventListener("change",persist);
+  var ma=el("div","acts"), cb=el("button","btn small","Copiar mensagem"), cm=el("span","hint",""); cb.type="button"; cb.id="msgCopy";
+  cb.addEventListener("click",function(){
+    try{ navigator.clipboard.writeText(msg.textContent).then(function(){ cm.textContent="Copiada."; },function(){ cm.textContent="Selecione o texto e copie pelo teclado."; }); }
+    catch(err){ cm.textContent="Selecione o texto e copie pelo teclado."; }
+  });
+  ma.appendChild(cb);
+  if(mlang!=="pt") ma.appendChild(function(){ var a=el("a","btn ghost small","Conferir em português ↗"); a.target="_blank"; a.rel="noopener noreferrer"; a.href="#"; a.addEventListener("click",function(){ a.href="https://translate.google.com/?sl="+mlang+"&tl=pt&op=translate&text="+encodeURIComponent(msg.textContent.slice(0,4500)); }); return a; }());
+  ma.appendChild(cm); s5.appendChild(ma);
+  if(foreign && j.lang!=="en" && j.lang!=="es") s5.appendChild(el("p","hint","O anúncio está em "+lname+". A mensagem sai em inglês; se a empresa pedir "+lname+", use a aba Tradutor."));
+  box.appendChild(s5);
+
+  /* checklist */
+  var s6=sec("Pronto para enviar?"), items=checkItems(j), cur=(S.checks[j.id]||[]).slice(), cl=el("ul","checks");
+  items.forEach(function(text,ix){
+    var li=el("li"), lab=el("label"), c=el("input"); c.type="checkbox"; c.id="chk-"+ix; c.checked=!!cur[ix];
+    c.addEventListener("change",function(){
+      var next={}; Object.keys(S.checks).forEach(function(k){ next[k]=S.checks[k]; });
+      var arr=items.map(function(_,q){ return !!(S.checks[j.id]||[])[q]; }); arr[ix]=c.checked;
+      next[j.id]=arr; S.checks=next; persist();
+    });
+    lab.appendChild(c); lab.appendChild(el("span",null,text)); li.appendChild(lab); cl.appendChild(li);
+  });
+  s6.appendChild(cl); box.appendChild(s6);
+
+  /* links */
+  var s7=sec("Links desta vaga"), lk=el("div","links");
+  if(u) lk.appendChild(ext("Anúncio original",u));
+  if(tr && foreign) lk.appendChild(ext("Anúncio traduzido para o português",tr));
+  if(j.company){
+    lk.appendChild(ext("Pesquisar a empresa "+j.company,"https://www.google.com/search?q="+encodeURIComponent(j.company)));
+    lk.appendChild(ext("Empresa no LinkedIn","https://www.linkedin.com/search/results/companies/?keywords="+encodeURIComponent(j.company)));
+    lk.appendChild(ext("Outras vagas de design na empresa","https://www.google.com/search?q="+encodeURIComponent(j.company+" careers designer")));
+  }
+  var REF={uiux:"ux case study",grafico:"brand identity",motion:"motion design reel",direcao:"campaign art direction"}[j.area]||"design portfolio";
+  lk.appendChild(ext("Portfólios de referência no Behance","https://www.behance.net/search/projects?search="+encodeURIComponent(REF)));
+  s7.appendChild(lk);
+  if(!window.claude){
+    var sa=el("div","acts"), sb=el("button","btn ghost small","Copiar link desta página"), sm=el("span","hint",""); sb.type="button";
+    sb.addEventListener("click",function(){
+      try{ navigator.clipboard.writeText(location.href).then(function(){ sm.textContent="Link copiado."; },function(){ sm.textContent=location.href; }); }
+      catch(err){ sm.textContent=location.href; }
+    });
+    sa.appendChild(sb); sa.appendChild(sm); s7.appendChild(sa);
+  }
+  box.appendChild(s7);
+}
+
+/* ---------- marks, checklists and profile (kept in this browser) ---------- */
+var SKEY="radar-vagas-estado";
+function loadState(){
+  try{ cleanState(JSON.parse(localStorage.getItem(SKEY)||"{}")); }catch(e){ cleanState({}); }
+  try{ if(!Object.keys(S.marks).length){ var old=JSON.parse(localStorage.getItem("radar-vagas-marks")||"null"); if(old) cleanState({m:old}); } }catch(e){}
+}
+function persist(){ try{ localStorage.setItem(SKEY,JSON.stringify({m:S.marks,k:S.checks,p:S.profile})); }catch(e){} }
 function setMark(id,val){
   var next={}; Object.keys(S.marks).forEach(function(k){ next[k]=S.marks[k]; });
   if(val) next[id]=val; else delete next[id];
-  S.marks=next; render();
-  try{ localStorage.setItem(MKEY,JSON.stringify(next)); }catch(e){}
+  S.marks=next; render(); persist();
 }
 
 /* ---------- data ---------- */
@@ -574,11 +846,12 @@ function normJob(id,d){
   d=d||{};
   return { id:id, title:str(d.title), title_pt:str(d.title_pt), company:str(d.company), source:str(d.source), url:str(d.url),
     location:str(d.location), elig:str(d.elig)||"restrito", mode:str(d.mode), contract:str(d.contract), area:str(d.area),
-    lang:str(d.lang), pay:str(d.pay), posted:str(d.posted), found:str(d.found), summary_pt:str(d.summary_pt), note:str(d.note) };
+    lang:str(d.lang), pay:str(d.pay), posted:str(d.posted), found:str(d.found), summary_pt:str(d.summary_pt), note:str(d.note),
+    reqs:strList(d.reqs,8), tools:strList(d.tools,10), work_lang:str(d.work_lang), apply:str(d.apply), deadline:str(d.deadline) };
 }
 function boot(){
   var note=$("loadNote");
-  loadMarks();
+  loadState();
   fetch("jobs.json?t="+Date.now(),{cache:"no-store"}).then(function(r){
     if(!r.ok) throw new Error("http "+r.status);
     return r.json();
@@ -690,7 +963,7 @@ function renderQueries(){
   });
 }
 
-renderSources(); renderQueries(); render(); renderSweep(); boot();
+renderSources(); renderQueries(); showTab(); render(); renderSweep(); boot();
 })();
 </script>
 </body>
