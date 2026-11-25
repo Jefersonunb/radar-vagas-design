@@ -1,9 +1,10 @@
 {
  "meta": {
-  "date": "2026-11-24",
-  "scanned": 264,
+  "date": "2026-11-25",
+  "scanned": 224,
   "sources": 6,
-  "kept": 44
+  "kept": 66,
+  "new": 22
  },
  "jobs": [
   {
@@ -243,7 +244,20 @@
    "posted": "2026-10-22",
    "found": "2026-11-24",
    "summary_pt": "Contrato como prestador para designers sêniores de UI e UX, com Brasil na lista de países aceitos.",
-   "note": "Também publicada no Working Nomads em 11/11."
+   "note": "Também publicada no Working Nomads em 11/11.",
+   "reqs": [
+    "5 anos ou mais de experiência em design de UI e UX",
+    "Experiência comercial com Figma e com prototipação ou design de produto (de 3 a 5 anos em cada)",
+    "Experiência com ferramentas Adobe",
+    "Inglês avançado para discutir briefings e defender decisões com clientes",
+    "Autonomia para trabalhar remoto em tempo integral e cumprir prazos"
+   ],
+   "tools": [
+    "Figma",
+    "Adobe Creative Suite"
+   ],
+   "work_lang": "inglês",
+   "apply": "Candidatura pelo site da empresa, com preenchimento de perfil e verificação; depois da aprovação, a empresa indica os projetos."
   },
   {
    "id": "2c6cebeb32bf",
@@ -861,6 +875,701 @@
    "found": "2026-11-24",
    "summary_pt": "Contrato de design gráfico em nível pleno.",
    "note": "Só para quem mora na Tchéquia."
+  },
+  {
+   "id": "65c2d82e708b",
+   "title": "Senior Product Designer II",
+   "title_pt": "Designer de Produto Sênior II",
+   "company": "Wrapbook",
+   "source": "Jobicy",
+   "url": "https://jobicy.com/jobs/157027-senior-product-designer-ii",
+   "location": "Estados Unidos e Canadá",
+   "elig": "restrito",
+   "mode": "remoto",
+   "contract": "clt",
+   "area": "uiux",
+   "lang": "en",
+   "pay": "US$ 175,5–241,5 mil/ano",
+   "posted": "2026-11-25",
+   "found": "2026-11-25",
+   "summary_pt": "Responde pelo design de uma área central da plataforma de finanças para produções audiovisuais, da definição do problema à entrega.",
+   "note": "Só para quem mora nos Estados Unidos ou no Canadá.",
+   "reqs": [
+    "Conduzir sozinho uma área de produto, de problemas pouco definidos até a entrega",
+    "Basear decisões em evidências e medir impacto com pesquisa e dados de uso",
+    "Priorizar o próprio trabalho a partir de sinais concorrentes",
+    "Entregar especificações prontas para implementação",
+    "Usar IA para ganhar eficiência mensurável"
+   ],
+   "tools": [
+    "Pendo",
+    "Dovetail",
+    "IA generativa"
+   ],
+   "work_lang": "inglês"
+  },
+  {
+   "id": "3e294b110c0f",
+   "title": "UI Artist for Games",
+   "title_pt": "Artista de UI para Jogos",
+   "company": "Playson",
+   "source": "Jobicy",
+   "url": "https://jobicy.com/jobs/149504-ui-artist-for-games",
+   "location": "Europa",
+   "elig": "restrito",
+   "mode": "remoto",
+   "contract": "clt",
+   "area": "grafico",
+   "lang": "en",
+   "posted": "2026-11-25",
+   "found": "2026-11-25",
+   "summary_pt": "Cria logotipos, ícones, símbolos e peças promocionais para jogos de caça-níquel e campanhas de marketing.",
+   "note": "Só para quem mora na Europa.",
+   "reqs": [
+    "5 anos ou mais como designer gráfico em jogos ou iGaming",
+    "Base forte em logotipo, layout, tipografia, cor e composição",
+    "Domínio de Photoshop ou ferramenta parecida",
+    "Criar do zero, sem depender de elementos prontos",
+    "Iniciativa e flexibilidade"
+   ],
+   "tools": [
+    "Photoshop",
+    "Spine"
+   ],
+   "work_lang": "inglês"
+  },
+  {
+   "id": "3d7a05ac8f80",
+   "title": "Staff Product Designer - Platform Design",
+   "title_pt": "Staff Product Designer (design de plataforma)",
+   "company": "Spotify",
+   "source": "Jobicy",
+   "url": "https://jobicy.com/jobs/156935-staff-product-designer-platform-design",
+   "location": "Reino Unido e Suécia",
+   "elig": "restrito",
+   "mode": "remoto",
+   "contract": "clt",
+   "area": "uiux",
+   "lang": "en",
+   "posted": "2026-11-25",
+   "found": "2026-11-25",
+   "summary_pt": "Define a estratégia de experiência e a linguagem visual das ferramentas para desenvolvedores do Spotify, unindo design e front-end.",
+   "note": "Vaga baseada em Londres ou Estocolmo, com alguns encontros presenciais.",
+   "reqs": [
+    "Trajetória forte em design de produtos digitais complexos",
+    "Atuar da estratégia à execução",
+    "Construir e publicar interfaces com tecnologias modernas de front-end",
+    "Entender ferramentas para desenvolvedores, software corporativo ou plataformas",
+    "Usar IA generativa e agentes com critério",
+    "Comunicar ideias e influenciar decisões de produto"
+   ],
+   "tools": [
+    "IA generativa"
+   ],
+   "work_lang": "inglês"
+  },
+  {
+   "id": "34ac060b574a",
+   "title": "Senior Product Designer (Fully Remote)",
+   "title_pt": "Designer de Produto Sênior (100% remoto)",
+   "company": "PadSplit",
+   "source": "Jobicy",
+   "url": "https://jobicy.com/jobs/156914-senior-product-designer-fully-remote",
+   "location": "Estados Unidos",
+   "elig": "restrito",
+   "mode": "remoto",
+   "contract": "clt",
+   "area": "uiux",
+   "lang": "en",
+   "pay": "US$ 120–130 mil/ano",
+   "posted": "2026-11-25",
+   "found": "2026-11-25",
+   "summary_pt": "Melhora a experiência de moradores e anfitriões em um marketplace de moradia acessível, dentro de um time de produto voltado a crescimento.",
+   "note": "Só para quem mora nos Estados Unidos.",
+   "reqs": [
+    "4 anos ou mais desenhando produtos digitais, de preferência funis de aquisição ou marketplaces",
+    "Pesquisa com usuários",
+    "Ligar decisões de design a métricas e receita",
+    "Experiência com fluxos de várias etapas e muitos casos de borda",
+    "Domínio de Figma e design de interação para web e celular",
+    "Familiaridade com testes A/B e recursos de IA"
+   ],
+   "tools": [
+    "Figma",
+    "IA generativa"
+   ],
+   "work_lang": "inglês",
+   "apply": "Processo com triagem em vídeo, revisão de projeto, estudo de caso e exercício prático de design."
+  },
+  {
+   "id": "ff625ccb2433",
+   "title": "Senior Digital Designer",
+   "title_pt": "Designer Digital Sênior",
+   "company": "Concentrix",
+   "source": "Himalayas",
+   "url": "https://himalayas.app/companies/concentrix/jobs/senior-digital-designer?utm_source=api",
+   "location": "Brasil",
+   "elig": "br",
+   "mode": "remoto",
+   "contract": "clt",
+   "area": "uiux",
+   "lang": "en",
+   "posted": "2026-11-24",
+   "found": "2026-11-25",
+   "summary_pt": "Cuida do site, das landing pages e das campanhas digitais da empresa, aplicando a nova marca e montando a biblioteca de componentes.",
+   "reqs": [
+    "5 anos ou mais em design web, digital ou de marketing",
+    "Portfólio com sites, landing pages e peças de campanha voltadas a conversão",
+    "Domínio avançado de Figma, com bibliotecas de componentes para web",
+    "Inglês profissional pleno",
+    "Noções de CRO, comportamento do usuário e acessibilidade",
+    "Prática com ferramentas de IA para design"
+   ],
+   "tools": [
+    "Figma",
+    "Google Analytics",
+    "Hotjar",
+    "IA generativa"
+   ],
+   "work_lang": "inglês"
+  },
+  {
+   "id": "f871cccd10b9",
+   "title": "Graphic and Editorial Design Expert, Remote",
+   "title_pt": "Especialista em Design Gráfico e Editorial (remoto)",
+   "company": "Xperteez Technology",
+   "source": "Himalayas",
+   "url": "https://himalayas.app/companies/xperteez-technology/jobs/graphic-and-editorial-design-expert-remote?utm_source=api",
+   "location": "Qualquer lugar do mundo",
+   "elig": "mundo",
+   "mode": "remoto",
+   "contract": "contrato",
+   "area": "grafico",
+   "lang": "en",
+   "posted": "2026-11-24",
+   "found": "2026-11-25",
+   "summary_pt": "Avalia peças gráficas e editoriais, como cartazes, capas e páginas, julgando layout, legibilidade e aderência ao briefing, com justificativa por escrito.",
+   "note": "Anunciada como mundial. Confirme no anúncio se a empresa contrata no Brasil.",
+   "reqs": [
+    "Atuação profissional como designer gráfico, editorial, de publicações, de marca ou diretor de arte",
+    "Uso diário de ferramentas profissionais de design",
+    "Experiência com trabalhos reais: briefings, revisões, arquivos de produção e entrega",
+    "Facilidade para explicar por que um design funciona e outro não",
+    "Inglês escrito claro"
+   ],
+   "tools": [
+    "InDesign",
+    "Illustrator",
+    "Photoshop",
+    "Figma"
+   ],
+   "work_lang": "inglês"
+  },
+  {
+   "id": "d4aca8bc3725",
+   "title": "Digital Product Design Lead",
+   "title_pt": "Líder de Design de Produto Digital",
+   "company": "Bobbie",
+   "source": "Jobicy",
+   "url": "https://jobicy.com/jobs/164056-digital-product-design-lead",
+   "location": "Estados Unidos",
+   "elig": "restrito",
+   "mode": "remoto",
+   "contract": "clt",
+   "area": "uiux",
+   "lang": "en",
+   "posted": "2026-11-24",
+   "found": "2026-11-25",
+   "summary_pt": "Lidera a experiência digital de uma marca de fórmula infantil por assinatura, estruturando a prática interna de UX/UI.",
+   "note": "Só para quem mora nos Estados Unidos.",
+   "reqs": [
+    "Portfólio que mostre a descoberta sobre o cliente por trás de cada decisão",
+    "Ter montado ou liderado uma prática interna de UX/UI",
+    "UX e UI de nível sênior para web e celular, com design systems escaláveis",
+    "Experiência com experiências personalizadas e guiadas por dados",
+    "Vivência em produtos de assinatura ou receita recorrente, de preferência mobile-first"
+   ],
+   "tools": [
+    "Figma"
+   ],
+   "work_lang": "inglês"
+  },
+  {
+   "id": "bb0bef466c0c",
+   "title": "Product Designer",
+   "title_pt": "Designer de Produto",
+   "company": "Binance",
+   "source": "Jobicy",
+   "url": "https://jobicy.com/jobs/164147-product-designer-7",
+   "location": "Singapura",
+   "elig": "restrito",
+   "mode": "remoto",
+   "contract": "clt",
+   "area": "uiux",
+   "lang": "en",
+   "posted": "2026-11-24",
+   "found": "2026-11-25",
+   "summary_pt": "Conduz o design de interação de produtos financeiros complexos na Binance, de fluxos e wireframes a protótipos de alta fidelidade.",
+   "note": "Anunciada no Jobicy só para Singapura.",
+   "reqs": [
+    "Experiência comprovada em design de interação de produtos financeiros",
+    "Raciocínio lógico para fluxos e estruturas de informação complexos",
+    "Design de interação de ponta a ponta",
+    "Domínio de fluxos, wireframes e prototipação",
+    "Boa colaboração com produto, engenharia e operações"
+   ],
+   "work_lang": "inglês"
+  },
+  {
+   "id": "956828609658",
+   "title": "Digital Illustrator",
+   "title_pt": "Ilustrador Digital",
+   "company": "Partyhat",
+   "source": "Himalayas",
+   "url": "https://himalayas.app/companies/partyhat/jobs/digital-illustrator-7389798820?utm_source=api",
+   "location": "16 países, Brasil incluído",
+   "elig": "multi",
+   "mode": "remoto",
+   "contract": "contrato",
+   "area": "grafico",
+   "lang": "en",
+   "pay": "Por hora ou valor fixo mensal, a combinar",
+   "posted": "2026-11-22",
+   "found": "2026-11-25",
+   "summary_pt": "Cria ilustrações, imagens de destaque, ícones de interface e artes para redes que formam a identidade visual da marca na web.",
+   "note": "O anúncio diz que o pagamento é feito em criptoativos (USDC/USDT). Avalie com cuidado.",
+   "reqs": [
+    "Portfólio de arte digital com composição e traço vetorial de alto nível",
+    "Domínio de ferramentas vetoriais e de imagem",
+    "Entender como a ilustração se adapta a layouts web responsivos",
+    "Disponibilidade para responder rápido em lançamentos",
+    "Organização para gerir muitos arquivos, camadas e versões"
+   ],
+   "tools": [
+    "Adobe Illustrator",
+    "Photoshop",
+    "Figma"
+   ],
+   "work_lang": "inglês"
+  },
+  {
+   "id": "8ff2820e1d5c",
+   "title": "Senior Product Designer (Ux/Ui)",
+   "title_pt": "Designer de Produto Sênior (UX/UI)",
+   "company": "Uitify",
+   "source": "JobLeads",
+   "url": "https://www.jobleads.com/br/job/senior-product-designer-ux-ui--brasilia--e275e7d3c59118fc37f706fa37b64dc5b",
+   "location": "Brasília, DF",
+   "elig": "bsb",
+   "mode": "hibrido",
+   "contract": "clt",
+   "area": "uiux",
+   "lang": "en",
+   "pay": "R$ 120–160 mil (período não informado)",
+   "posted": "2026-11-21",
+   "found": "2026-11-25",
+   "summary_pt": "Lidera o design de produto de ponta a ponta em ferramentas SaaS e de cibersegurança, num estúdio brasileiro que atende startups dos EUA.",
+   "reqs": [
+    "7 anos ou mais como designer de produto (qualificação preferencial)",
+    "Portfólio corporativo, sobretudo em cibersegurança ou ferramentas com muitos dados",
+    "Inglês profissional pleno",
+    "Experiência em times ágeis",
+    "Conhecimento de WCAG e design systems"
+   ],
+   "tools": [
+    "Figma",
+    "FigJam",
+    "Framer",
+    "Principle"
+   ],
+   "work_lang": "inglês",
+   "apply": "Enviar currículo e portfólio por e-mail para os endereços indicados no anúncio."
+  },
+  {
+   "id": "fec2074fb58b",
+   "title": "Product Designer",
+   "title_pt": "Product Designer",
+   "company": "Omie",
+   "source": "Himalayas",
+   "url": "https://himalayas.app/companies/omie/jobs/product-designer?utm_source=api",
+   "location": "Brasil",
+   "elig": "br",
+   "mode": "remoto",
+   "contract": "clt",
+   "area": "uiux",
+   "lang": "pt",
+   "posted": "2026-11-20",
+   "found": "2026-11-25",
+   "summary_pt": "Desenha produtos internos da Omie em squads, do discovery com usuários internos à prototipação no Figma e ao acompanhamento por métricas.",
+   "reqs": [
+    "Experiência comprovada como Product Designer em produtos digitais",
+    "Conhecimento de discovery (Double Diamond) e UX Research",
+    "Vivência em times ágeis",
+    "Domínio de design system, componentização e padrões de UX/UI",
+    "Figma como ferramenta principal de prototipação",
+    "Ensino superior completo em Design ou área correlata"
+   ],
+   "tools": [
+    "Figma"
+   ],
+   "work_lang": "português"
+  },
+  {
+   "id": "a141f1c879f0",
+   "title": "UX & Experience Systems Designer | Websites for Universities | Remote (LATAM) 🎨🎓",
+   "title_pt": "Designer de UX e Sistemas de Experiência (sites para universidades)",
+   "company": "Atomic HR",
+   "source": "Himalayas",
+   "url": "https://himalayas.app/companies/atomic-hr/jobs/ux-experience-systems-designer-websites-for-universities-remote-latam?utm_source=api",
+   "location": "América Latina",
+   "elig": "latam",
+   "mode": "remoto",
+   "contract": "contrato",
+   "area": "uiux",
+   "lang": "en",
+   "pay": "Em dólar, conforme experiência (o anúncio pede a pretensão)",
+   "posted": "2026-11-20",
+   "found": "2026-11-25",
+   "summary_pt": "Lidera os design systems de sites e landing pages de instituições de ensino, acompanhando desenvolvimento e QA numa agência de marketing.",
+   "note": "Cerca de 40 horas por semana, com horário flexível dentro dos fusos dos EUA.",
+   "reqs": [
+    "Portfólio com UX/UI, design systems e componentes reutilizáveis",
+    "Experiência como designer de UX, produto ou design systems em agência ou equipe digital",
+    "Prática criando ou mantendo biblioteca de componentes",
+    "Conhecimento funcional de HTML, CSS e front-end responsivo",
+    "Base sólida em arquitetura da informação, usabilidade e acessibilidade (WCAG)",
+    "Inglês claro, escrito e falado"
+   ],
+   "tools": [
+    "Figma",
+    "IA generativa"
+   ],
+   "work_lang": "inglês"
+  },
+  {
+   "id": "9b7ea5727838",
+   "title": "Growth Designer",
+   "title_pt": "Designer de Growth",
+   "company": "SuperSummary",
+   "source": "Himalayas",
+   "url": "https://himalayas.app/companies/supersummary/jobs/growth-designer?utm_source=api",
+   "location": "Brasil",
+   "elig": "br",
+   "mode": "remoto",
+   "contract": "contrato",
+   "area": "uiux",
+   "lang": "en",
+   "posted": "2026-11-20",
+   "found": "2026-11-25",
+   "summary_pt": "Lidera o design dos experimentos de crescimento de uma plataforma de guias de leitura: landing pages, cadastro, paywall, checkout e retenção.",
+   "reqs": [
+    "Inglês fluente, escrito e falado",
+    "5 anos ou mais em design de produto, ao menos 2 com foco em growth",
+    "Portfólio de trabalhos de growth com resultados medidos",
+    "Design visual forte e experiência em traduzir visão de produto em identidade de marca",
+    "Histórico consistente de testes A/B e leitura de métricas de funil",
+    "Figma avançado e fluxos de trabalho com IA"
+   ],
+   "tools": [
+    "Figma",
+    "Amplitude",
+    "Microsoft Clarity",
+    "Claude Code",
+    "IA generativa"
+   ],
+   "work_lang": "inglês"
+  },
+  {
+   "id": "4b7f36f1931d",
+   "title": "Middle Product Designer",
+   "title_pt": "Designer de Produto Pleno",
+   "company": "Helpware",
+   "source": "Himalayas",
+   "url": "https://himalayas.app/companies/helpware/jobs/middle-product-designer?utm_source=api",
+   "location": "Brasil, Argentina, México, Filipinas e Ucrânia",
+   "elig": "multi",
+   "mode": "remoto",
+   "contract": "clt",
+   "area": "uiux",
+   "lang": "en",
+   "posted": "2026-11-20",
+   "found": "2026-11-25",
+   "summary_pt": "Assume o design de ponta a ponta de uma plataforma de IA para o setor jurídico, direto com fundadores e engenharia.",
+   "reqs": [
+    "3 a 5 anos de design de produto em software já lançado, de preferência aplicações web",
+    "Portfólio com fluxos, design de interação e interface bem acabada",
+    "Fluência em Figma, com prototipação e design system",
+    "Saber simplificar fluxos densos de usuários especialistas",
+    "Autonomia e comunicação clara em equipe pequena e distribuída",
+    "Uso frequente de ferramentas de IA"
+   ],
+   "tools": [
+    "Figma",
+    "IA generativa"
+   ],
+   "work_lang": "inglês"
+  },
+  {
+   "id": "1203e048b8ac",
+   "title": "Sr Product Designer - (B2C & AI Prototyping)",
+   "title_pt": "Designer de Produto Sênior (B2C e prototipação com IA)",
+   "company": "LURECRUITER",
+   "source": "Himalayas",
+   "url": "https://himalayas.app/companies/lurecruiter/jobs/sr-product-designer-b2c-ai-prototyping?utm_source=api",
+   "location": "América Latina",
+   "elig": "latam",
+   "mode": "remoto",
+   "contract": "clt",
+   "area": "uiux",
+   "lang": "en",
+   "pay": "Em dólar (valor não informado)",
+   "posted": "2026-11-20",
+   "found": "2026-11-25",
+   "summary_pt": "Desenha a experiência do consumidor em um produto de busca de aluguel com IA conversacional, para uma empresa de tecnologia dos EUA.",
+   "reqs": [
+    "Experiência sólida em produtos digitais B2C, com jornadas complexas em web e celular",
+    "Ter conduzido e lançado experiências de consumo de ponta a ponta recentemente",
+    "UI e design visual de nível excepcional",
+    "Uso real de ferramentas de IA para protótipos funcionais com código",
+    "Figma avançado: componentes, variáveis e protótipos interativos",
+    "Inglês fluente"
+   ],
+   "tools": [
+    "Figma",
+    "Claude",
+    "Claude Code",
+    "Cursor",
+    "Figma MCP"
+   ],
+   "work_lang": "inglês",
+   "apply": "Portfólio obrigatório, com 2 a 3 estudos de caso detalhados, ao menos um B2C de ponta a ponta feito de 2024 em diante."
+  },
+  {
+   "id": "867d1661599c",
+   "title": "Product Designer Sênior - ERP Fiscal",
+   "title_pt": "Product Designer Sênior (ERP Fiscal)",
+   "company": "Asaas",
+   "source": "Himalayas",
+   "url": "https://himalayas.app/companies/asaas/jobs/product-designer-senior-erp-fiscal?utm_source=api",
+   "location": "Brasil",
+   "elig": "br",
+   "mode": "remoto",
+   "contract": "clt",
+   "area": "uiux",
+   "lang": "pt",
+   "posted": "2026-11-19",
+   "found": "2026-11-25",
+   "summary_pt": "Participa de toda a concepção do produto de emissão de notas fiscais do Asaas, da pesquisa à interface final.",
+   "note": "Empresa de Joinville (SC); o anúncio aceita trabalho remoto.",
+   "reqs": [
+    "Experiência com emissão de notas fiscais (NFS-e) ou ERP",
+    "Forte orientação para UI e design system, com bom handoff técnico",
+    "Domínio de métodos de pesquisa e entregáveis de UX",
+    "Atenção analítica a regras de negócio e normas fiscais",
+    "Prototipação rápida e protótipos interativos para validar fluxos complexos",
+    "Comunicação clara com pares, PMs e desenvolvedores"
+   ],
+   "work_lang": "português"
+  },
+  {
+   "id": "51273c922776",
+   "title": "Senior Motion Graphic Designer",
+   "title_pt": "Motion Designer Sênior",
+   "company": "DotYeti Design",
+   "source": "Himalayas",
+   "url": "https://himalayas.app/companies/dotyeti-design/jobs/senior-motion-graphic-designer-5252290785?utm_source=api",
+   "location": "Brasil",
+   "elig": "br",
+   "mode": "remoto",
+   "contract": "contrato",
+   "area": "motion",
+   "lang": "en",
+   "posted": "2026-11-19",
+   "found": "2026-11-25",
+   "summary_pt": "Cria direções de motion graphics, animações e vídeos de marca para clientes de uma equipe criativa totalmente remota.",
+   "note": "Trabalho no horário de Brasília, das 11h às 19h.",
+   "reqs": [
+    "Experiência comprovada em motion design, animação ou edição de vídeo",
+    "Portfólio forte de motion graphics 2D e vídeos de marca",
+    "Familiaridade com 3D, renderização avançada, correção de cor ou animações para web e apps",
+    "Atenção a detalhe e acabamento",
+    "Comunicação clara e trabalho em equipe"
+   ],
+   "tools": [
+    "Adobe Creative Suite",
+    "Blender",
+    "Cinema 4D",
+    "Redshift",
+    "Octane",
+    "DaVinci Resolve",
+    "Lottie",
+    "Rive",
+    "IA generativa"
+   ],
+   "work_lang": "inglês",
+   "apply": "Candidatura pelo próprio anúncio; o processo tem conversa inicial, teste prático e entrevista final."
+  },
+  {
+   "id": "3a7cbe659666",
+   "title": "Experience Architect",
+   "title_pt": "Arquiteto de Experiência",
+   "company": "Salesforce",
+   "source": "Himalayas",
+   "url": "https://himalayas.app/companies/salesforce/jobs/experience-architect-8798832109?utm_source=api",
+   "location": "Brasil",
+   "elig": "br",
+   "mode": "remoto",
+   "contract": "clt",
+   "area": "uiux",
+   "lang": "en",
+   "posted": "2026-11-19",
+   "found": "2026-11-25",
+   "summary_pt": "Consultoria de design de experiência para clientes da Salesforce: pesquisa com usuários, workshops, jornadas, arquitetura da informação e protótipos.",
+   "reqs": [
+    "5 anos ou mais em disciplinas ligadas a design",
+    "Aplicar processos de design centrado no usuário junto a clientes e equipes multidisciplinares",
+    "Domínio de Figma, Adobe Creative Suite ou ferramentas de UX",
+    "Domínio de ferramentas de IA",
+    "Experiência em consultoria de design",
+    "Português ou espanhol como primeiro idioma e inglês como segundo"
+   ],
+   "tools": [
+    "Figma",
+    "Adobe Creative Suite",
+    "Claude Code",
+    "Gemini",
+    "NotebookLM"
+   ],
+   "work_lang": "português ou espanhol, com inglês como segundo idioma"
+  },
+  {
+   "id": "165960a3680a",
+   "title": "UI/UX Designer",
+   "title_pt": "Designer de UI/UX",
+   "company": "AWISEE",
+   "source": "Himalayas",
+   "url": "https://himalayas.app/companies/awisee/jobs/ui-ux-designer?utm_source=api",
+   "location": "Brasil",
+   "elig": "br",
+   "mode": "remoto",
+   "contract": "clt",
+   "area": "uiux",
+   "lang": "en",
+   "pay": "US$ 850–1.250/mês",
+   "posted": "2026-11-19",
+   "found": "2026-11-25",
+   "summary_pt": "Desenha interfaces de aplicações web, painéis e site de uma agência de marketing, prototipando principalmente com Claude e com apoio do Figma.",
+   "reqs": [
+    "3 anos ou mais de prática em design de UI/UX",
+    "Domínio de tipografia, espaçamento, cor e layout",
+    "Experiência com aplicações web responsivas e painéis",
+    "Wireframes, prototipação e mapeamento de jornadas",
+    "Prática de design e prototipação com Claude ou ferramentas de IA parecidas",
+    "Figma como apoio: componentes, auto layout, variantes e design systems"
+   ],
+   "tools": [
+    "Claude",
+    "Figma"
+   ],
+   "work_lang": "inglês",
+   "apply": "Candidatura pelo anúncio, com currículo e portfólio, incluindo projetos feitos com Claude ou Figma."
+  },
+  {
+   "id": "160d72e654ac",
+   "title": "Product Designer Senior - Pix",
+   "title_pt": "Product Designer Sênior (Pix)",
+   "company": "Asaas",
+   "source": "Himalayas",
+   "url": "https://himalayas.app/companies/asaas/jobs/product-designer-senior-pix?utm_source=api",
+   "location": "Brasil",
+   "elig": "br",
+   "mode": "remoto",
+   "contract": "clt",
+   "area": "uiux",
+   "lang": "pt",
+   "posted": "2026-11-19",
+   "found": "2026-11-25",
+   "summary_pt": "Referência de design na jornada do Pix do Asaas, de discovery e pesquisa a testes A/B e interfaces web e mobile.",
+   "note": "Empresa de Joinville (SC); o anúncio aceita trabalho remoto.",
+   "reqs": [
+    "Experiência sólida como Product Designer em produtos digitais",
+    "Vivência em squads ágeis, com domínio de discovery e delivery",
+    "Domínio de pesquisa quantitativa e qualitativa",
+    "Saber interpretar métricas de produto e decidir com base em dados",
+    "Excelência em UI, com cuidado estético",
+    "Atenção a regras de negócio complexas"
+   ],
+   "tools": [
+    "IA generativa"
+   ],
+   "work_lang": "português"
+  },
+  {
+   "id": "0daf1bfa9e2d",
+   "title": "IA Creator",
+   "title_pt": "Criador de Conteúdo com IA",
+   "company": "Stormx",
+   "source": "Himalayas",
+   "url": "https://himalayas.app/companies/stormx/jobs/ia-creator?utm_source=api",
+   "location": "Brasil",
+   "elig": "br",
+   "mode": "remoto",
+   "contract": "contrato",
+   "area": "grafico",
+   "lang": "pt",
+   "posted": "2026-11-19",
+   "found": "2026-11-25",
+   "summary_pt": "Gera imagens e vídeos com IA para campanhas, redes sociais e anúncios, e dá o acabamento final no Photoshop e no After Effects.",
+   "reqs": [
+    "Experiência prática com geração de imagens e vídeos por IA",
+    "Domínio de Photoshop para retoque, composição e finalização",
+    "Conhecimento de After Effects e/ou Premiere",
+    "Técnicas de edição localizada com IA e de upscaling",
+    "Olhar apurado para acabamento e fidelidade ao produto",
+    "Portfólio com projetos de IA, de preferência com antes e depois"
+   ],
+   "tools": [
+    "Midjourney",
+    "Flux",
+    "Adobe Firefly",
+    "Runway",
+    "Kling",
+    "Veo",
+    "Photoshop",
+    "After Effects",
+    "Premiere"
+   ],
+   "work_lang": "português"
+  },
+  {
+   "id": "b295b300e1ef",
+   "title": "Designer, Social & Brand",
+   "title_pt": "Designer de Social e Marca",
+   "company": "Darkroom",
+   "source": "Himalayas",
+   "url": "https://himalayas.app/companies/darkroom/jobs/designer-social-brand-6440801925?utm_source=api",
+   "location": "Brasil, Portugal e Espanha",
+   "elig": "multi",
+   "mode": "remoto",
+   "contract": "clt",
+   "area": "grafico",
+   "lang": "en",
+   "posted": "2026-11-17",
+   "found": "2026-11-25",
+   "summary_pt": "Responde pelo visual da agência nas redes sociais, com carrosséis, posts, modelos de stories e gráficos para vídeos curtos, além de apresentações.",
+   "note": "Banco de talentos: a empresa avisa que ainda não está entrevistando. Horário da costa leste dos EUA (9h às 17h).",
+   "reqs": [
+    "3 anos ou mais em design de marca, marketing ou visual",
+    "Portfólio centrado em social: sistemas de carrossel, séries de conteúdo e peças nativas de cada plataforma",
+    "Pensar em sistemas visuais e no desempenho do design nas redes",
+    "Fluência em Figma, com componentes e bibliotecas compartilhadas",
+    "Tipografia e layout fortes em vários formatos",
+    "Organização e clareza ao explicar decisões"
+   ],
+   "tools": [
+    "Figma"
+   ],
+   "work_lang": "inglês"
   }
  ]
 }
