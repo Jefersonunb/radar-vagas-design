@@ -3,95 +3,10 @@
   "date": "2026-11-25",
   "scanned": 498,
   "sources": 24,
-  "kept": 51,
+  "kept": 39,
   "new": 0
  },
  "jobs": [
-  {
-   "id": "467d8c2562ce",
-   "title": "UX Designer SR",
-   "title_pt": "Designer de UX Sênior",
-   "company": "Grupo SysMap",
-   "source": "Himalayas",
-   "url": "https://himalayas.app/companies/grupo-sysmap/jobs/ux-designer-sr-18765791?utm_source=api",
-   "location": "Brasil",
-   "elig": "br",
-   "mode": "remoto",
-   "contract": "clt",
-   "area": "uiux",
-   "lang": "pt",
-   "posted": "2026-11-06",
-   "found": "2026-11-24",
-   "summary_pt": "Vaga sênior de UX em tempo integral, remota, para quem mora no Brasil."
-  },
-  {
-   "id": "204d5a6e0ab3",
-   "title": "Designer de Interação Pleno | RD Station (Remoto)",
-   "title_pt": "Designer de Interação Pleno",
-   "company": "RD Station",
-   "source": "Himalayas",
-   "url": "https://himalayas.app/companies/rd-station/jobs/designer-de-interacao-pleno-rd-station-remoto?utm_source=api",
-   "location": "Brasil",
-   "elig": "br",
-   "mode": "remoto",
-   "contract": "clt",
-   "area": "uiux",
-   "lang": "pt",
-   "posted": "2026-11-06",
-   "found": "2026-11-24",
-   "summary_pt": "Design de interação em nível pleno na RD Station, em tempo integral e remoto no Brasil."
-  },
-  {
-   "id": "6ca52b4995db",
-   "title": "[Job - 32560] UX Designer (Mid-Level), Brazil",
-   "title_pt": "Designer de UX Pleno (Brasil)",
-   "company": "CI&T",
-   "source": "Himalayas",
-   "url": "https://himalayas.app/companies/ci-t/jobs/job-32560-ux-designer-mid-level-brazil?utm_source=api",
-   "location": "Brasil",
-   "elig": "br",
-   "mode": "remoto",
-   "contract": "clt",
-   "area": "uiux",
-   "lang": "en",
-   "posted": "2026-11-06",
-   "found": "2026-11-24",
-   "summary_pt": "UX em nível pleno na CI&T, tempo integral, para profissionais no Brasil."
-  },
-  {
-   "id": "60e159855ed6",
-   "title": "Senior Multimedia Designer",
-   "title_pt": "Designer Multimídia Sênior",
-   "company": "DotYeti Design",
-   "source": "Jooble",
-   "url": "https://br.jooble.org/jdp/8855169415189709767",
-   "location": "Remoto, fuso do Brasil",
-   "elig": "br",
-   "mode": "remoto",
-   "contract": "clt",
-   "area": "grafico",
-   "lang": "en",
-   "posted": "2026-11-15",
-   "found": "2026-11-24",
-   "summary_pt": "Vaga sênior remota de design multimídia, com expediente no fuso horário do Brasil."
-  },
-  {
-   "id": "6d0f5c1f1e9b",
-   "title": "Sr. UI/UX Designer",
-   "title_pt": "Designer de UI/UX Sênior",
-   "company": "Fusemachines",
-   "source": "Jooble",
-   "url": "https://br.jooble.org/jdp/-2232554606151646132",
-   "location": "Remoto",
-   "elig": "br",
-   "mode": "remoto",
-   "contract": "clt",
-   "area": "uiux",
-   "lang": "en",
-   "posted": "2026-11-07",
-   "found": "2026-11-24",
-   "summary_pt": "Tempo integral e remoto: responde pelo design de uma área do produto, ligando necessidades do usuário às metas do negócio."
-  },
   {
    "id": "ce71c84572b5",
    "title": "Creative (Graphic Designer)",
@@ -288,24 +203,8 @@
    "pay": "R$ 5.250/mês",
    "posted": "2026-11-23",
    "found": "2026-11-24",
-   "summary_pt": "Vaga CLT presencial para designer gráfico pleno ou sênior em equipe interna."
-  },
-  {
-   "id": "e120184efb02",
-   "title": "Designer de Produtos e Embalagens – Pleno",
-   "title_pt": "Designer de Produtos e Embalagens Pleno",
-   "company": "Papelito",
-   "source": "Jooble",
-   "url": "https://br.jooble.org/jdp/-1684609389228625245",
-   "location": "Brasília, DF",
-   "elig": "bsb",
-   "mode": "confirmar",
-   "contract": "contrato",
-   "area": "grafico",
-   "lang": "pt",
-   "posted": "2026-11-22",
-   "found": "2026-11-24",
-   "summary_pt": "Contrato PJ para desenvolver produtos, embalagens e rótulos em um time de inovação."
+   "summary_pt": "Vaga CLT presencial para designer gráfico pleno ou sênior em equipe interna.",
+   "note": "Detalhes não confirmados: abra o anúncio."
   },
   {
    "id": "c081ef4ab564",
@@ -358,7 +257,8 @@
    "pay": "R$ 4.000/mês",
    "posted": "2026-11-19",
    "found": "2026-11-24",
-   "summary_pt": "Peças de comunicação para canais online e offline, incluindo outdoor e totens, com marketing e redes sociais."
+   "summary_pt": "Peças de comunicação para canais online e offline, incluindo outdoor e totens, com marketing e redes sociais.",
+   "note": "Detalhes não confirmados: abra o anúncio."
   },
   {
    "id": "9d3c0e5f2c8f",
@@ -375,7 +275,8 @@
    "pay": "R$ 5.563/mês",
    "posted": "2026-11-16",
    "found": "2026-11-24",
-   "summary_pt": "Produção de artes gráficas em CorelDRAW para comunicação institucional."
+   "summary_pt": "Produção de artes gráficas em CorelDRAW para comunicação institucional.",
+   "note": "Detalhes não confirmados: abra o anúncio."
   },
   {
    "id": "65858af8dea0",
@@ -393,7 +294,8 @@
    "pay": "R$ 1.769,87/mês",
    "posted": "2026-11-14",
    "found": "2026-11-24",
-   "summary_pt": "Peças visuais para os canais de comunicação de uma empresa de papelaria escolar e uniformes."
+   "summary_pt": "Peças visuais para os canais de comunicação de uma empresa de papelaria escolar e uniformes.",
+   "note": "Detalhes não confirmados: abra o anúncio."
   },
   {
    "id": "9a98d5e9904e",
@@ -410,25 +312,8 @@
    "lang": "pt",
    "posted": "2026-11-13",
    "found": "2026-11-24",
-   "summary_pt": "Designer gráfico para agência de marketing da área de saúde. Pede também edição de vídeo."
-  },
-  {
-   "id": "0f195f973eaf",
-   "title": "Graphic Designer ID85581",
-   "title_pt": "Designer Gráfico",
-   "company": "AgileEngine",
-   "source": "Jooble",
-   "url": "https://br.jooble.org/jdp/-5315006859755614046",
-   "location": "Brasília, DF",
-   "elig": "bsb",
-   "mode": "confirmar",
-   "contract": "clt",
-   "area": "grafico",
-   "lang": "en",
-   "posted": "2026-11-05",
-   "found": "2026-11-24",
-   "summary_pt": "Conceitos visuais para e-commerce, web, mobile e campanhas em vários canais.",
-   "note": "Listada em Brasília. Confirme no anúncio se o trabalho é remoto."
+   "summary_pt": "Designer gráfico para agência de marketing da área de saúde. Pede também edição de vídeo.",
+   "note": "Detalhes não confirmados: abra o anúncio."
   },
   {
    "id": "ff625ccb2433",
@@ -587,38 +472,6 @@
     "Figma"
    ],
    "work_lang": "português"
-  },
-  {
-   "id": "a141f1c879f0",
-   "title": "UX & Experience Systems Designer | Websites for Universities | Remote (LATAM) 🎨🎓",
-   "title_pt": "Designer de UX e Sistemas de Experiência (sites para universidades)",
-   "company": "Atomic HR",
-   "source": "Himalayas",
-   "url": "https://himalayas.app/companies/atomic-hr/jobs/ux-experience-systems-designer-websites-for-universities-remote-latam?utm_source=api",
-   "location": "América Latina",
-   "elig": "latam",
-   "mode": "remoto",
-   "contract": "contrato",
-   "area": "uiux",
-   "lang": "en",
-   "pay": "Em dólar, conforme experiência (o anúncio pede a pretensão)",
-   "posted": "2026-11-20",
-   "found": "2026-11-25",
-   "summary_pt": "Lidera os design systems de sites e landing pages de instituições de ensino, acompanhando desenvolvimento e QA numa agência de marketing.",
-   "note": "Cerca de 40 horas por semana, com horário flexível dentro dos fusos dos EUA.",
-   "reqs": [
-    "Portfólio com UX/UI, design systems e componentes reutilizáveis",
-    "Experiência como designer de UX, produto ou design systems em agência ou equipe digital",
-    "Prática criando ou mantendo biblioteca de componentes",
-    "Conhecimento funcional de HTML, CSS e front-end responsivo",
-    "Base sólida em arquitetura da informação, usabilidade e acessibilidade (WCAG)",
-    "Inglês claro, escrito e falado"
-   ],
-   "tools": [
-    "Figma",
-    "IA generativa"
-   ],
-   "work_lang": "inglês"
   },
   {
    "id": "9b7ea5727838",
@@ -946,24 +799,6 @@
    "work_lang": "inglês"
   },
   {
-   "id": "ce2174c41980",
-   "title": "Principal Product Designer",
-   "title_pt": "Principal Product Designer",
-   "company": "Prophet Security",
-   "source": "UI UX Jobs Board",
-   "url": "https://uiuxjobsboard.com/job/1700726-remote-anywhere-principal-product-designer",
-   "location": "Qualquer lugar do mundo",
-   "elig": "mundo",
-   "mode": "remoto",
-   "contract": "clt",
-   "area": "uiux",
-   "lang": "en",
-   "posted": "2026-11-25",
-   "found": "2026-11-25",
-   "summary_pt": "Vaga de nível principal em design de produto, em tempo integral, numa empresa de segurança digital.",
-   "note": "Anunciada como remota de qualquer lugar. Confirme no anúncio se a empresa contrata no Brasil."
-  },
-  {
    "id": "df8ebd3b503d",
    "title": "Senior Product Designer",
    "title_pt": "Designer de Produto Sênior",
@@ -1010,60 +845,6 @@
    "found": "2026-11-25",
    "summary_pt": "Estágio em home office para pessoa criativa e proativa, com interesse em marketing digital. Não pede experiência.",
    "note": "O cabeçalho indica Guarulhos (SP); anunciada como home office."
-  },
-  {
-   "id": "9d38d79259e4",
-   "title": "Lead Product Designer",
-   "title_pt": "Designer de Produto Líder",
-   "company": "Flying Bisons",
-   "source": "UI UX Jobs Board",
-   "url": "https://uiuxjobsboard.com/job/1698626-remote-anywhere-lead-product-designer",
-   "location": "Qualquer lugar do mundo",
-   "elig": "mundo",
-   "mode": "remoto",
-   "contract": "contrato",
-   "area": "uiux",
-   "lang": "en",
-   "posted": "2026-11-24",
-   "found": "2026-11-25",
-   "summary_pt": "Liderança de design de produto por contrato, anunciada como remota.",
-   "note": "Anunciada como remota de qualquer lugar. Confirme no anúncio se a empresa contrata no Brasil."
-  },
-  {
-   "id": "5e311f5173d5",
-   "title": "GenAI Senior Art Director",
-   "title_pt": "Diretor de Arte Sênior (IA generativa)",
-   "company": "Brandtech+",
-   "source": "UI UX Jobs Board",
-   "url": "https://uiuxjobsboard.com/job/1696726-remote-anywhere-genai-senior-art-director",
-   "location": "Qualquer lugar do mundo",
-   "elig": "mundo",
-   "mode": "remoto",
-   "contract": "clt",
-   "area": "direcao",
-   "lang": "en",
-   "posted": "2026-11-24",
-   "found": "2026-11-25",
-   "summary_pt": "Direção de arte sênior com uso de IA generativa, em tempo integral, anunciada como remota.",
-   "note": "Anunciada como remota de qualquer lugar. Confirme no anúncio se a empresa contrata no Brasil."
-  },
-  {
-   "id": "4656e954acca",
-   "title": "Senior Product Designer (Ethena Pay)",
-   "title_pt": "Designer de Produto Sênior (Ethena Pay)",
-   "company": "Ethena Pay",
-   "source": "DailyRemote",
-   "url": "https://dailyremote.com/remote-job/senior-product-designer-ethena-pay-5955333",
-   "location": "Qualquer lugar do mundo",
-   "elig": "mundo",
-   "mode": "remoto",
-   "contract": "clt",
-   "area": "uiux",
-   "lang": "en",
-   "posted": "2026-11-24",
-   "found": "2026-11-25",
-   "summary_pt": "Design de produto, design system e identidade de marca de um aplicativo para celular, incluindo motion e interação. Pede de 5 a 10 anos.",
-   "note": "Anunciada como mundial no DailyRemote. Confirme no anúncio se a empresa contrata no Brasil."
   },
   {
    "id": "439146c3d476",
