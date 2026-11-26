@@ -1,10 +1,10 @@
 {
  "meta": {
-  "date": "2026-11-25",
-  "scanned": 498,
-  "sources": 24,
+  "date": "2026-11-26",
+  "scanned": 259,
+  "sources": 9,
   "kept": 39,
-  "new": 0
+  "new": 2
  },
  "jobs": [
   {
@@ -113,51 +113,21 @@
    "posted": "2026-11-22",
    "found": "2026-11-24",
    "summary_pt": "Lidera um time de designers sêniores em produtos de fertilidade e cuidado familiar, dividindo o tempo entre design e gestão.",
-   "note": "Também aparece no Remote OK como mundial."
-  },
-  {
-   "id": "29883d6f2c8d",
-   "title": "Gemini: Senior Product Designer (Prediction Markets)",
-   "title_pt": "Designer de Produto Sênior (mercados de previsão)",
-   "company": "Gemini",
-   "source": "We Work Remotely",
-   "url": "https://weworkremotely.com/remote-jobs/gemini-senior-product-designer-prediction-markets",
-   "location": "Qualquer lugar do mundo",
-   "elig": "mundo",
-   "mode": "remoto",
-   "contract": "clt",
-   "area": "uiux",
-   "lang": "en",
-   "posted": "2026-11-21",
-   "found": "2026-11-24",
-   "summary_pt": "Responde de ponta a ponta pelo design de produtos de mercados de previsão, para varejo e clientes institucionais.",
-   "note": "Anunciada como mundial. Confirme no anúncio se a empresa contrata no Brasil.",
+   "note": "Também aparece no Remote OK como mundial.",
    "reqs": [
-    "5 anos ou mais de experiência em design de produto",
-    "Transformar requisitos de negócio e pesquisa com usuários em soluções para problemas complexos",
-    "Conduzir a jornada inteira: conceito, protótipo, teste com usuários e produção",
-    "Criar experiências para web e celular",
-    "Contribuir com novos padrões para o design system"
+    "10 anos ou mais em design de produto ou UX/UI, com pelo menos 2 liderando designers",
+    "Portfólio de produtos digitais lançados para consumidor final, mostrando liderança de equipe",
+    "Histórico de orientar designers experientes e conduzir conversas de desempenho",
+    "Uso prático de ferramentas de IA para prototipar e entregar design",
+    "Experiência evoluindo design system junto com engenharia",
+    "Domínio de design de interação, design visual, acessibilidade WCAG e pesquisa com usuários"
    ],
-   "work_lang": "inglês"
-  },
-  {
-   "id": "bbca60b1bc32",
-   "title": "Gusto, Inc.: Staff Product Designer",
-   "title_pt": "Designer de Produto (nível Staff)",
-   "company": "Gusto",
-   "source": "We Work Remotely",
-   "url": "https://weworkremotely.com/remote-jobs/gusto-inc-staff-product-designer",
-   "location": "Qualquer lugar do mundo",
-   "elig": "mundo",
-   "mode": "remoto",
-   "contract": "clt",
-   "area": "uiux",
-   "lang": "en",
-   "posted": "2026-11-21",
-   "found": "2026-11-24",
-   "summary_pt": "Design de ponta a ponta nos produtos financeiros ou de RH da Gusto, com cinco times contratando.",
-   "note": "Anunciada como mundial. Confirme no anúncio se a empresa contrata no Brasil."
+   "tools": [
+    "IA generativa",
+    "Design system"
+   ],
+   "work_lang": "inglês",
+   "apply": "O processo tem triagem com recrutador, entrevista com o gestor, revisão de portfólio de 60 minutos e conversa com a liderança."
   },
   {
    "id": "3bfcd6ed938e",
@@ -1073,6 +1043,68 @@
    ],
    "work_lang": "português fluente e inglês básico",
    "apply": "Candidatura pelo portal de vagas do UNICEF, com proposta financeira que inclua todos os custos."
+  },
+  {
+   "id": "65ca736f6f79",
+   "title": "Roblox Thumbnail Designer",
+   "title_pt": "Designer de Thumbnails para Roblox",
+   "company": "Indigo VC",
+   "source": "Himalayas",
+   "url": "https://himalayas.app/companies/indigo-vc/jobs/roblox-thumbnail-designer?utm_source=api",
+   "location": "Qualquer lugar do mundo",
+   "elig": "mundo",
+   "mode": "remoto",
+   "contract": "clt",
+   "area": "grafico",
+   "lang": "en",
+   "posted": "2026-11-25",
+   "found": "2026-11-26",
+   "summary_pt": "Cria conceitos, ícones e thumbnails de jogos no Roblox, do primeiro esboço à arte final, com Photoshop e ferramentas de IA.",
+   "note": "Anunciada sem restrição de país. Confirme no anúncio se a empresa contrata no Brasil.",
+   "reqs": [
+    "Pensamento visual forte e noção do que chama a atenção de jogadores",
+    "Bom gosto, atenção a detalhes e familiaridade com tendências de Roblox, jogos mobile ou thumbnails de YouTube",
+    "Domínio de Photoshop e de ferramentas de IA",
+    "Iniciativa para propor ideias e levá-las até a arte final com autonomia",
+    "Experiência com conceitos visuais, arte promocional ou assets de jogos conta a favor"
+   ],
+   "tools": [
+    "Photoshop",
+    "IA generativa"
+   ],
+   "work_lang": "inglês",
+   "apply": "A candidatura é feita pelo link do anúncio, na plataforma BuySide; a equipe da empresa retorna aos selecionados."
+  },
+  {
+   "id": "fba57db08e38",
+   "title": "Landing Page Designer",
+   "title_pt": "Designer de Landing Pages",
+   "company": "RYZE Superfoods",
+   "source": "Himalayas",
+   "url": "https://himalayas.app/companies/ryze-superfoods/jobs/landing-page-designer?utm_source=api",
+   "location": "7 países, Brasil incluído",
+   "elig": "multi",
+   "mode": "remoto",
+   "contract": "contrato",
+   "area": "uiux",
+   "lang": "en",
+   "posted": "2026-11-26",
+   "found": "2026-11-26",
+   "summary_pt": "Desenha landing pages de retenção, varejo e afiliados e os fluxos do portal de assinatura de uma marca de e-commerce, em Figma.",
+   "note": "Contrato de cerca de 25 horas por semana, com possibilidade de virar tempo integral.",
+   "reqs": [
+    "3 anos ou mais desenhando landing pages ou páginas de e-commerce, com páginas no ar para mostrar",
+    "Figma avançado: componentes, auto layout e design system, com arquivos prontos para o desenvolvedor",
+    "Experiência em fluxos de várias etapas, como área de conta, checkout ou gestão de assinatura",
+    "Capacidade de seguir a marca e também criar sites com identidade própria",
+    "Pensar primeiro no celular e manter qualidade com vários prazos ao mesmo tempo",
+    "Inglês escrito claro e comunicação confiável"
+   ],
+   "tools": [
+    "Figma",
+    "ClickUp"
+   ],
+   "work_lang": "inglês"
   }
  ]
 }
