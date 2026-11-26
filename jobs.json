@@ -3,8 +3,8 @@
   "date": "2026-11-26",
   "scanned": 259,
   "sources": 9,
-  "kept": 39,
-  "new": 2
+  "kept": 20,
+  "new": 0
  },
  "jobs": [
   {
@@ -35,7 +35,8 @@
     "Figma",
     "IA generativa"
    ],
-   "work_lang": "inglês"
+   "work_lang": "inglês",
+   "checked": "2026-11-26"
   },
   {
    "id": "b60a51596e6c",
@@ -65,7 +66,8 @@
     "Figma",
     "IA generativa"
    ],
-   "work_lang": "inglês"
+   "work_lang": "inglês",
+   "checked": "2026-11-26"
   },
   {
    "id": "e9159ecb64c3",
@@ -95,7 +97,8 @@
     "Figma",
     "IA generativa"
    ],
-   "work_lang": "inglês"
+   "work_lang": "inglês",
+   "checked": "2026-11-26"
   },
   {
    "id": "6fc8b805b68f",
@@ -127,163 +130,8 @@
     "Design system"
    ],
    "work_lang": "inglês",
-   "apply": "O processo tem triagem com recrutador, entrevista com o gestor, revisão de portfólio de 60 minutos e conversa com a liderança."
-  },
-  {
-   "id": "3bfcd6ed938e",
-   "title": "Breakthrough Design Group: Senior Creative & Web Designer",
-   "title_pt": "Designer Criativo e Web Sênior",
-   "company": "Breakthrough Design Group",
-   "source": "We Work Remotely",
-   "url": "https://weworkremotely.com/remote-jobs/breakthrough-design-group-senior-creative-web-designer",
-   "location": "Qualquer lugar do mundo",
-   "elig": "mundo",
-   "mode": "remoto",
-   "contract": "contrato",
-   "area": "grafico",
-   "lang": "en",
-   "posted": "2026-11-05",
-   "found": "2026-11-24",
-   "summary_pt": "Contrato remoto para designer sênior de criação e web em um estúdio de design.",
-   "reqs": [
-    "Sites no ar desenhados por você, para mostrar",
-    "Direção criativa demonstrável",
-    "Design responsivo e para celular",
-    "Experiência em UI/UX",
-    "Diferenciais: design de marca, ilustração e ícones"
-   ],
-   "tools": [
-    "Figma",
-    "Sketch"
-   ],
-   "work_lang": "inglês"
-  },
-  {
-   "id": "952810d28522",
-   "title": "Designer Gráfico",
-   "title_pt": "Designer Gráfico",
-   "source": "Jooble",
-   "url": "https://br.jooble.org/away/-8530313603606761213",
-   "location": "Setor Comercial Sul, Brasília",
-   "elig": "bsb",
-   "mode": "presencial",
-   "contract": "clt",
-   "area": "grafico",
-   "lang": "pt",
-   "pay": "R$ 5.250/mês",
-   "posted": "2026-11-23",
-   "found": "2026-11-24",
-   "summary_pt": "Vaga CLT presencial para designer gráfico pleno ou sênior em equipe interna.",
-   "note": "Detalhes não confirmados: abra o anúncio."
-  },
-  {
-   "id": "c081ef4ab564",
-   "title": "Estágio em Design Gráfico com Foco em Diagramação Editorial",
-   "title_pt": "Estágio em Design Gráfico (diagramação editorial)",
-   "company": "INSIGHT Recursos Humanos",
-   "source": "Jooble",
-   "url": "https://br.jooble.org/jdp/-354704064133677983",
-   "location": "Brasília, DF",
-   "elig": "bsb",
-   "mode": "confirmar",
-   "contract": "estagio",
-   "area": "grafico",
-   "lang": "pt",
-   "posted": "2026-11-22",
-   "found": "2026-11-24",
-   "summary_pt": "Estágio com diagramação editorial, design de interface, ilustração e fechamento de arquivos."
-  },
-  {
-   "id": "0c087542d717",
-   "title": "Vaga de Estágio em Design Gráfico, Marketing e Comunicação",
-   "title_pt": "Estágio em Design Gráfico, Marketing e Comunicação",
-   "company": "SENAPPEN",
-   "source": "Jooble",
-   "url": "https://br.jooble.org/jdp/8847628149548440021",
-   "location": "Brasília, DF",
-   "elig": "bsb",
-   "mode": "presencial",
-   "contract": "estagio",
-   "area": "grafico",
-   "lang": "pt",
-   "pay": "R$ 1.508,42/mês",
-   "posted": "2026-11-20",
-   "found": "2026-11-24",
-   "summary_pt": "Estágio na área de tecnologia do órgão para estudantes de design, comunicação e marketing, em projetos reais."
-  },
-  {
-   "id": "b7a9480367e1",
-   "title": "Designer Gráfico",
-   "title_pt": "Designer Gráfico",
-   "company": "Bali Park",
-   "source": "Jooble",
-   "url": "https://br.jooble.org/jdp/2067429323348696537",
-   "location": "Brasília, DF",
-   "elig": "bsb",
-   "mode": "presencial",
-   "contract": "clt",
-   "area": "grafico",
-   "lang": "pt",
-   "pay": "R$ 4.000/mês",
-   "posted": "2026-11-19",
-   "found": "2026-11-24",
-   "summary_pt": "Peças de comunicação para canais online e offline, incluindo outdoor e totens, com marketing e redes sociais.",
-   "note": "Detalhes não confirmados: abra o anúncio."
-  },
-  {
-   "id": "9d3c0e5f2c8f",
-   "title": "Designer Gráfico",
-   "title_pt": "Designer Gráfico",
-   "source": "Jooble",
-   "url": "https://br.jooble.org/jdp/-2019601141148587646",
-   "location": "Brasília, DF",
-   "elig": "bsb",
-   "mode": "presencial",
-   "contract": "clt",
-   "area": "grafico",
-   "lang": "pt",
-   "pay": "R$ 5.563/mês",
-   "posted": "2026-11-16",
-   "found": "2026-11-24",
-   "summary_pt": "Produção de artes gráficas em CorelDRAW para comunicação institucional.",
-   "note": "Detalhes não confirmados: abra o anúncio."
-  },
-  {
-   "id": "65858af8dea0",
-   "title": "Designer Gráfico",
-   "title_pt": "Designer Gráfico",
-   "company": "US Factory (Unipaper)",
-   "source": "Jooble",
-   "url": "https://br.jooble.org/jdp/4487184775101391607",
-   "location": "Brasília, DF",
-   "elig": "bsb",
-   "mode": "presencial",
-   "contract": "clt",
-   "area": "grafico",
-   "lang": "pt",
-   "pay": "R$ 1.769,87/mês",
-   "posted": "2026-11-14",
-   "found": "2026-11-24",
-   "summary_pt": "Peças visuais para os canais de comunicação de uma empresa de papelaria escolar e uniformes.",
-   "note": "Detalhes não confirmados: abra o anúncio."
-  },
-  {
-   "id": "9a98d5e9904e",
-   "title": "Designer Gráfico",
-   "title_pt": "Designer Gráfico",
-   "company": "Voxdoc",
-   "source": "Jooble",
-   "url": "https://br.jooble.org/jdp/864581700481038314",
-   "location": "Brasília, DF",
-   "elig": "bsb",
-   "mode": "confirmar",
-   "contract": "clt",
-   "area": "grafico",
-   "lang": "pt",
-   "posted": "2026-11-13",
-   "found": "2026-11-24",
-   "summary_pt": "Designer gráfico para agência de marketing da área de saúde. Pede também edição de vídeo.",
-   "note": "Detalhes não confirmados: abra o anúncio."
+   "apply": "O processo tem triagem com recrutador, entrevista com o gestor, revisão de portfólio de 60 minutos e conversa com a liderança.",
+   "checked": "2026-11-26"
   },
   {
    "id": "ff625ccb2433",
@@ -315,39 +163,8 @@
     "Hotjar",
     "IA generativa"
    ],
-   "work_lang": "inglês"
-  },
-  {
-   "id": "f871cccd10b9",
-   "title": "Graphic and Editorial Design Expert, Remote",
-   "title_pt": "Especialista em Design Gráfico e Editorial (remoto)",
-   "company": "Xperteez Technology",
-   "source": "Himalayas",
-   "url": "https://himalayas.app/companies/xperteez-technology/jobs/graphic-and-editorial-design-expert-remote?utm_source=api",
-   "location": "Qualquer lugar do mundo",
-   "elig": "mundo",
-   "mode": "remoto",
-   "contract": "contrato",
-   "area": "grafico",
-   "lang": "en",
-   "posted": "2026-11-24",
-   "found": "2026-11-25",
-   "summary_pt": "Avalia peças gráficas e editoriais, como cartazes, capas e páginas, julgando layout, legibilidade e aderência ao briefing, com justificativa por escrito.",
-   "note": "Anunciada como mundial. Confirme no anúncio se a empresa contrata no Brasil.",
-   "reqs": [
-    "Atuação profissional como designer gráfico, editorial, de publicações, de marca ou diretor de arte",
-    "Uso diário de ferramentas profissionais de design",
-    "Experiência com trabalhos reais: briefings, revisões, arquivos de produção e entrega",
-    "Facilidade para explicar por que um design funciona e outro não",
-    "Inglês escrito claro"
-   ],
-   "tools": [
-    "InDesign",
-    "Illustrator",
-    "Photoshop",
-    "Figma"
-   ],
-   "work_lang": "inglês"
+   "work_lang": "inglês",
+   "checked": "2026-11-26"
   },
   {
    "id": "956828609658",
@@ -379,7 +196,8 @@
     "Photoshop",
     "Figma"
    ],
-   "work_lang": "inglês"
+   "work_lang": "inglês",
+   "checked": "2026-11-26"
   },
   {
    "id": "8ff2820e1d5c",
@@ -412,7 +230,8 @@
     "Principle"
    ],
    "work_lang": "inglês",
-   "apply": "Enviar currículo e portfólio por e-mail para os endereços indicados no anúncio."
+   "apply": "Enviar currículo e portfólio por e-mail para os endereços indicados no anúncio.",
+   "checked": "2026-11-26"
   },
   {
    "id": "fec2074fb58b",
@@ -441,7 +260,8 @@
    "tools": [
     "Figma"
    ],
-   "work_lang": "português"
+   "work_lang": "português",
+   "checked": "2026-11-26"
   },
   {
    "id": "9b7ea5727838",
@@ -474,7 +294,8 @@
     "Claude Code",
     "IA generativa"
    ],
-   "work_lang": "inglês"
+   "work_lang": "inglês",
+   "checked": "2026-11-26"
   },
   {
    "id": "4b7f36f1931d",
@@ -504,7 +325,8 @@
     "Figma",
     "IA generativa"
    ],
-   "work_lang": "inglês"
+   "work_lang": "inglês",
+   "checked": "2026-11-26"
   },
   {
    "id": "1203e048b8ac",
@@ -539,7 +361,8 @@
     "Figma MCP"
    ],
    "work_lang": "inglês",
-   "apply": "Portfólio obrigatório, com 2 a 3 estudos de caso detalhados, ao menos um B2C de ponta a ponta feito de 2024 em diante."
+   "apply": "Portfólio obrigatório, com 2 a 3 estudos de caso detalhados, ao menos um B2C de ponta a ponta feito de 2024 em diante.",
+   "checked": "2026-11-26"
   },
   {
    "id": "867d1661599c",
@@ -566,7 +389,8 @@
     "Prototipação rápida e protótipos interativos para validar fluxos complexos",
     "Comunicação clara com pares, PMs e desenvolvedores"
    ],
-   "work_lang": "português"
+   "work_lang": "português",
+   "checked": "2026-11-26"
   },
   {
    "id": "51273c922776",
@@ -604,72 +428,8 @@
     "IA generativa"
    ],
    "work_lang": "inglês",
-   "apply": "Candidatura pelo próprio anúncio; o processo tem conversa inicial, teste prático e entrevista final."
-  },
-  {
-   "id": "3a7cbe659666",
-   "title": "Experience Architect",
-   "title_pt": "Arquiteto de Experiência",
-   "company": "Salesforce",
-   "source": "Himalayas",
-   "url": "https://himalayas.app/companies/salesforce/jobs/experience-architect-8798832109?utm_source=api",
-   "location": "Brasil",
-   "elig": "br",
-   "mode": "remoto",
-   "contract": "clt",
-   "area": "uiux",
-   "lang": "en",
-   "posted": "2026-11-19",
-   "found": "2026-11-25",
-   "summary_pt": "Consultoria de design de experiência para clientes da Salesforce: pesquisa com usuários, workshops, jornadas, arquitetura da informação e protótipos.",
-   "reqs": [
-    "5 anos ou mais em disciplinas ligadas a design",
-    "Aplicar processos de design centrado no usuário junto a clientes e equipes multidisciplinares",
-    "Domínio de Figma, Adobe Creative Suite ou ferramentas de UX",
-    "Domínio de ferramentas de IA",
-    "Experiência em consultoria de design",
-    "Português ou espanhol como primeiro idioma e inglês como segundo"
-   ],
-   "tools": [
-    "Figma",
-    "Adobe Creative Suite",
-    "Claude Code",
-    "Gemini",
-    "NotebookLM"
-   ],
-   "work_lang": "português ou espanhol, com inglês como segundo idioma"
-  },
-  {
-   "id": "165960a3680a",
-   "title": "UI/UX Designer",
-   "title_pt": "Designer de UI/UX",
-   "company": "AWISEE",
-   "source": "Himalayas",
-   "url": "https://himalayas.app/companies/awisee/jobs/ui-ux-designer?utm_source=api",
-   "location": "Brasil",
-   "elig": "br",
-   "mode": "remoto",
-   "contract": "clt",
-   "area": "uiux",
-   "lang": "en",
-   "pay": "US$ 850–1.250/mês",
-   "posted": "2026-11-19",
-   "found": "2026-11-25",
-   "summary_pt": "Desenha interfaces de aplicações web, painéis e site de uma agência de marketing, prototipando principalmente com Claude e com apoio do Figma.",
-   "reqs": [
-    "3 anos ou mais de prática em design de UI/UX",
-    "Domínio de tipografia, espaçamento, cor e layout",
-    "Experiência com aplicações web responsivas e painéis",
-    "Wireframes, prototipação e mapeamento de jornadas",
-    "Prática de design e prototipação com Claude ou ferramentas de IA parecidas",
-    "Figma como apoio: componentes, auto layout, variantes e design systems"
-   ],
-   "tools": [
-    "Claude",
-    "Figma"
-   ],
-   "work_lang": "inglês",
-   "apply": "Candidatura pelo anúncio, com currículo e portfólio, incluindo projetos feitos com Claude ou Figma."
+   "apply": "Candidatura pelo próprio anúncio; o processo tem conversa inicial, teste prático e entrevista final.",
+   "checked": "2026-11-26"
   },
   {
    "id": "160d72e654ac",
@@ -699,7 +459,8 @@
    "tools": [
     "IA generativa"
    ],
-   "work_lang": "português"
+   "work_lang": "português",
+   "checked": "2026-11-26"
   },
   {
    "id": "0daf1bfa9e2d",
@@ -736,37 +497,8 @@
     "After Effects",
     "Premiere"
    ],
-   "work_lang": "português"
-  },
-  {
-   "id": "b295b300e1ef",
-   "title": "Designer, Social & Brand",
-   "title_pt": "Designer de Social e Marca",
-   "company": "Darkroom",
-   "source": "Himalayas",
-   "url": "https://himalayas.app/companies/darkroom/jobs/designer-social-brand-6440801925?utm_source=api",
-   "location": "Brasil, Portugal e Espanha",
-   "elig": "multi",
-   "mode": "remoto",
-   "contract": "clt",
-   "area": "grafico",
-   "lang": "en",
-   "posted": "2026-11-17",
-   "found": "2026-11-25",
-   "summary_pt": "Responde pelo visual da agência nas redes sociais, com carrosséis, posts, modelos de stories e gráficos para vídeos curtos, além de apresentações.",
-   "note": "Banco de talentos: a empresa avisa que ainda não está entrevistando. Horário da costa leste dos EUA (9h às 17h).",
-   "reqs": [
-    "3 anos ou mais em design de marca, marketing ou visual",
-    "Portfólio centrado em social: sistemas de carrossel, séries de conteúdo e peças nativas de cada plataforma",
-    "Pensar em sistemas visuais e no desempenho do design nas redes",
-    "Fluência em Figma, com componentes e bibliotecas compartilhadas",
-    "Tipografia e layout fortes em vários formatos",
-    "Organização e clareza ao explicar decisões"
-   ],
-   "tools": [
-    "Figma"
-   ],
-   "work_lang": "inglês"
+   "work_lang": "português",
+   "checked": "2026-11-26"
   },
   {
    "id": "df8ebd3b503d",
@@ -795,56 +527,8 @@
     "Figma"
    ],
    "work_lang": "inglês",
-   "apply": "Formulário da empresa no Ashby, a partir do botão do anúncio."
-  },
-  {
-   "id": "9f9a8675b7b9",
-   "title": "Vaga De Estágio Designer Gráfico - Home Office",
-   "title_pt": "Estágio de Designer Gráfico (home office)",
-   "company": "MF Ellos Criações",
-   "source": "InfoJobs",
-   "url": "https://www.infojobs.com.br/vaga-de-vaga-estagio-designer-grafico-home-office-em-sao-paulo__12245060.aspx",
-   "location": "Brasil",
-   "elig": "br",
-   "mode": "remoto",
-   "contract": "estagio",
-   "area": "grafico",
-   "lang": "pt",
-   "pay": "R$ 1.500/mês",
-   "posted": "2026-11-24",
-   "found": "2026-11-25",
-   "summary_pt": "Estágio em home office para pessoa criativa e proativa, com interesse em marketing digital. Não pede experiência.",
-   "note": "O cabeçalho indica Guarulhos (SP); anunciada como home office."
-  },
-  {
-   "id": "439146c3d476",
-   "title": "Estágio Em Design",
-   "title_pt": "Estágio em Design",
-   "company": "Souza Santos Consultoria",
-   "source": "InfoJobs",
-   "url": "https://www.infojobs.com.br/vaga-de-estagio-design-em-__12233288.aspx",
-   "location": "Brasil",
-   "elig": "br",
-   "mode": "remoto",
-   "contract": "estagio",
-   "area": "grafico",
-   "lang": "pt",
-   "pay": "R$ 700–800/mês",
-   "posted": "2026-11-18",
-   "found": "2026-11-25",
-   "summary_pt": "Estágio remoto, no período da tarde, para criar layouts e ilustrações para diferentes plataformas.",
-   "reqs": [
-    "Estar cursando ensino superior",
-    "Interesse em design",
-    "Conhecimento básico de Illustrator e Photoshop",
-    "Boa comunicação e criatividade"
-   ],
-   "tools": [
-    "Adobe Illustrator",
-    "Photoshop"
-   ],
-   "work_lang": "português",
-   "apply": "Botão Candidatar-me no InfoJobs."
+   "apply": "Formulário da empresa no Ashby, a partir do botão do anúncio.",
+   "checked": "2026-11-25"
   },
   {
    "id": "dde58b85e0ef",
@@ -879,7 +563,8 @@
     "Canva"
    ],
    "work_lang": "português",
-   "apply": "Botão Candidatar-me no InfoJobs."
+   "apply": "Botão Candidatar-me no InfoJobs.",
+   "checked": "2026-11-26"
   },
   {
    "id": "911e416a23aa",
@@ -898,151 +583,8 @@
    "posted": "2026-11-16",
    "found": "2026-11-25",
    "summary_pt": "Estágio em design em empresa de marketing, anunciado como 100% home office.",
-   "note": "O cabeçalho indica Rio de Janeiro, mas o anúncio diz 100% home office."
-  },
-  {
-   "id": "3c0885f44057",
-   "title": "Senior UX/UI Lead",
-   "title_pt": "Líder Sênior de UX/UI",
-   "company": "Niuro",
-   "source": "Get on Board",
-   "url": "https://www.getonbrd.com/jobs/diseno-ux/senior-ux-ui-lead-niuro-remote",
-   "location": "América Latina",
-   "elig": "latam",
-   "mode": "remoto",
-   "contract": "clt",
-   "area": "uiux",
-   "lang": "en",
-   "pay": "US$ 3.000–3.500/mês",
-   "posted": "2026-11-05",
-   "found": "2026-11-25",
-   "summary_pt": "Lidera UX/UI de um produto fintech, pensado primeiro para celular, voltado a autônomos e pequenos negócios.",
-   "note": "Só para quem mora na América do Sul, na América Central ou no México. Exige espanhol fluente.",
-   "reqs": [
-    "5 anos ou mais como UX/UI sênior ou líder",
-    "Uso diário de IA para prototipar",
-    "UX/UI para celular, com acessibilidade e UX writing",
-    "Análise de funil, testes A/B e métricas de produto",
-    "Design system para app, web, e-mail e redes",
-    "Experiência com produtos financeiros"
-   ],
-   "tools": [
-    "Claude",
-    "Claude Code",
-    "IA generativa"
-   ],
-   "work_lang": "espanhol fluente e inglês intermediário (B2)",
-   "apply": "Botão de candidatura no Get on Board, com login."
-  },
-  {
-   "id": "8e1b185a4e74",
-   "title": "UX/UI Designer",
-   "title_pt": "Designer de UX/UI",
-   "company": "Pyxl",
-   "source": "Get on Board",
-   "url": "https://www.getonbrd.com/jobs/design-ux/ux-ui-designer-pyxl-remote-5bf7",
-   "location": "América do Sul e Estados Unidos",
-   "elig": "latam",
-   "mode": "remoto",
-   "contract": "contrato",
-   "area": "uiux",
-   "lang": "en",
-   "pay": "US$ 5.000/mês",
-   "posted": "2026-11-02",
-   "found": "2026-11-25",
-   "summary_pt": "UX/UI em tempo integral por seis meses, para lojas virtuais de marcas de consumo atendidas por uma agência digital dos EUA.",
-   "note": "Contrato de 6 meses, 40 horas por semana, no horário comercial dos EUA.",
-   "reqs": [
-    "Inglês excelente, falado e escrito",
-    "Disponibilidade no horário comercial da costa leste ou central dos EUA",
-    "Experiência com e-commerce, venda direta ao consumidor e aplicativos",
-    "UX voltada a conversão e pensada primeiro para celular",
-    "Desejável: Shopify e cerca de 10 anos de experiência"
-   ],
-   "tools": [
-    "Figma",
-    "Shopify"
-   ],
-   "work_lang": "inglês",
-   "apply": "Botão de candidatura no Get on Board, em inglês."
-  },
-  {
-   "id": "0e76826a0683",
-   "title": "Designer Gráfico - Designer",
-   "title_pt": "Designer Gráfico",
-   "company": "Convergência Marketing",
-   "source": "InfoJobs",
-   "url": "https://www.infojobs.com.br/vaga-de-designer-grafico-designer-em-sao-paulo__12162169.aspx",
-   "location": "Brasil",
-   "elig": "br",
-   "mode": "remoto",
-   "area": "grafico",
-   "lang": "pt",
-   "pay": "R$ 2.000–3.000/mês",
-   "posted": "2026-10-28",
-   "found": "2026-11-25",
-   "summary_pt": "Analista de marketing com função de designer, para integrar a equipe de criação em home office. Pede de 1 a 3 anos de experiência.",
-   "note": "O cabeçalho indica Osasco (SP); anunciada como home office."
-  },
-  {
-   "id": "527504ffaf88",
-   "title": "Junior Graphic Designer",
-   "title_pt": "Designer Gráfico Júnior",
-   "company": "ONU-Habitat",
-   "source": "Impactpool",
-   "sector": "inst",
-   "url": "https://www.impactpool.org/jobs/1246215",
-   "location": "Brasil",
-   "elig": "br",
-   "mode": "remoto",
-   "contract": "contrato",
-   "area": "grafico",
-   "lang": "en",
-   "found": "2026-11-25",
-   "summary_pt": "Consultoria de dois meses, de casa, para apoiar a comunicação visual do ONU-Habitat no Brasil.",
-   "note": "Vista no Impactpool sem data nem prazo, e o site avisa que as datas podem estar erradas. Confirme no Inspira (careers.un.org) se continua aberta. Só para brasileiros ou estrangeiros com residência permanente.",
-   "reqs": [
-    "Graduação em Design Gráfico, Comunicação, Jornalismo ou área afim",
-    "3 anos de experiência em design gráfico",
-    "Experiência prévia no contexto brasileiro",
-    "Português fluente",
-    "Desejável: design para ONGs e conteúdo para redes sociais"
-   ],
-   "tools": [
-    "Adobe Illustrator",
-    "InDesign",
-    "Photoshop",
-    "Canva"
-   ],
-   "work_lang": "português fluente; anúncio em inglês",
-   "apply": "Pelo sistema Inspira da ONU, com perfil de candidato e carta de apresentação de até uma página."
-  },
-  {
-   "id": "13e1a793825e",
-   "title": "Designer for the One Million Opportunities (1MiO) initiative Consultant, Brasilia (remote), Brazil [365 days]",
-   "title_pt": "Consultoria de Designer para a iniciativa Um Milhão de Oportunidades (1MiO)",
-   "company": "UNICEF",
-   "source": "UNICEF",
-   "sector": "inst",
-   "url": "https://jobs.unicef.org/mob/cw/en-us/job/592147/designer-for-the-one-million-opportunities-1mio-initiative-consultant-brasilia-remote-brazil-365-days",
-   "location": "Brasil (remoto, com base em Brasília)",
-   "elig": "br",
-   "mode": "remoto",
-   "contract": "contrato",
-   "area": "grafico",
-   "lang": "en",
-   "found": "2026-11-25",
-   "summary_pt": "Consultoria de 12 meses para criar peças gráficas, identidade visual e materiais de comunicação da iniciativa 1MiO, com entregas mensais.",
-   "note": "O anúncio não mostra data de publicação nem prazo: confirme se continua aberto. Prevê três viagens curtas, a São Paulo e a Brasília.",
-   "reqs": [
-    "Graduação em Design, Artes ou área afim",
-    "5 anos de experiência profissional em design",
-    "Português fluente e inglês básico",
-    "Conhecimento de direitos da criança (Convenção e ECA)",
-    "Experiência no sistema ONU é diferencial"
-   ],
-   "work_lang": "português fluente e inglês básico",
-   "apply": "Candidatura pelo portal de vagas do UNICEF, com proposta financeira que inclua todos os custos."
+   "note": "O cabeçalho indica Rio de Janeiro, mas o anúncio diz 100% home office.",
+   "checked": "2026-11-26"
   },
   {
    "id": "65ca736f6f79",
@@ -1073,7 +615,8 @@
     "IA generativa"
    ],
    "work_lang": "inglês",
-   "apply": "A candidatura é feita pelo link do anúncio, na plataforma BuySide; a equipe da empresa retorna aos selecionados."
+   "apply": "A candidatura é feita pelo link do anúncio, na plataforma BuySide; a equipe da empresa retorna aos selecionados.",
+   "checked": "2026-11-26"
   },
   {
    "id": "fba57db08e38",
@@ -1104,7 +647,8 @@
     "Figma",
     "ClickUp"
    ],
-   "work_lang": "inglês"
+   "work_lang": "inglês",
+   "checked": "2026-11-26"
   }
  ]
 }
